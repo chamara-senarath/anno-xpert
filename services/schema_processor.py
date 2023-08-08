@@ -46,6 +46,9 @@ class SchemaProcessor:
     def get_tree_dot_object(self):
         graph = bt.tree_to_dot(self.root)
         return graph.to_string()
+    
+    def get_nodes_by_level(self,level=1):
+        return bt.findall(self.root, lambda node: node.depth == level)
 
 # root.show(max_depth=5,attr_list=["enumerations"])
 
