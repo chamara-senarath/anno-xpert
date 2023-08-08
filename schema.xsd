@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.lipn.univ-paris13.fr/rcln/legal"
+	xmlns:leg="http://www.lipn.univ-paris13.fr/rcln/legal"
+	xmlns:orig="http://formex.publications.europa.eu/schema/formex">
+
+	<!-- 
+		types and groups to clarify the writing -->
+	<xs:element name="COMMENT" type="xs:string" />	<!-- To return to the original version, delete the
+	text together with the label -->
+	<xs:group name="fragment_base_group">
+		<xs:choice>
+			<xs:element ref="leg:CONCEPT" />
+			<xs:element ref="leg:PERSON" />
+			<xs:element ref="leg:LEGAL_ENTITY" />
+			<xs:element ref="leg:EXCEPT" />
+			<xs:element ref="leg:COMMENT" />
+		</xs:choice>
+	</xs:group>
+	<xs:group name="entity_base_group">
+		<xs:choice>
+			<!-- initially empty ; modified while the integration to include quotes and such things. -->
+		</xs:choice>
+	</xs:group>
+	<xs:complexType name="fragment_base_type" mixed="true">
+		<xs:annotation>
+			<xs:documentation> The fragment_base_type type defines the content of fragments. It is a
+				mix of text and elements. These elements, as is_list_header and has_list_header
+				attributes, are shared by all the fragments. </xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:group ref="leg:fragment_base_group" />
+		</xs:choice>
+		<xs:attribute name="is_list_header" type="xs:boolean" default="false" />
+		<xs:attribute name="has_list_header" type="leg:fragment_identifier" />
+	</xs:complexType>
+	<!--	-->
+	<xs:complexType name="entity_base_type" mixed="true">
+		<xs:annotation>
+			<xs:documentation> the entity_base_type defines the content of entity mentions -
+				initially, pure text. The integration allows quotes, etc.</xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:group ref="leg:entity_base_group" />
+		</xs:choice>
+	</xs:complexType>
+	<!--	-->
+	<xs:complexType name="no_text_entity_base_type">
+		<xs:annotation>
+			<xs:documentation> the no_text_entity_base_type defines the content of entries in
+				dictionary, and also of text identifiers. They only contain LABEL elements which
+				provide examples of corresponding linguistic forms (possible mentions) or
+				comment/translate the meaning of the supplementary reference.</xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="LABEL">
+				<xs:complexType>
+					<xs:attribute name="lang" type="xs:language" />
+					<xs:attribute name="value" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<!--  
+		Syntactic constraints on IDENTIFIERS attributes of fragments and their references	-->
+	<xs:simpleType name="fragment_identifier">
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="\d{3}(\-\d{3})?[A-Z]*\.\d{3}[A-Z]*.\d{3}|UNDEFINED|LEGAL_TEXT|EXTERNAL_LEGAL_SOURCE|C\d{1,2}" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="fragment_identifier_list">		<!-- syntactic constraint for references to one
+		or several IDENTIFIERs -->
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="((\d{3}(\-\d{3})?[A-Z]*(\.\d{3}[A-Z]*(.\d{3}){0,1}){0,1})|C\d{1,2})(( \d{3}(\-\d{3})?[A-Z]*(\.\d{3}[A-Z]*(.\d{3}){0,1}){0,1})|C\d{1,2})*|UNDEFINED|LEGAL_TEXT|EXTERNAL_LEGAL_SOURCE" />
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- The following attributes are shared by most fragments, but not all	-->
+	<xs:attributeGroup name="ire">
+		<xs:attribute name="IDENTIFIER" use="required" type="leg:fragment_identifier" />
+		<xs:attribute name="rel" type="leg:fragment_identifier_list" />
+		<xs:attribute name="except" type="leg:fragment_identifier_list" />
+	</xs:attributeGroup>
+	<xs:attributeGroup name="irre"> <!-- as ire, but rel is required -->
+		<xs:attribute name="IDENTIFIER" use="required" type="leg:fragment_identifier" />
+		<xs:attribute name="rel" use="required" type="leg:fragment_identifier_list" />
+		<xs:attribute name="except" type="leg:fragment_identifier_list" />
+	</xs:attributeGroup>
+	<!--   
+				Now the definitions of our anotation labels            
+	-->
+	<!--      First the at least proposition elements that we add beside ARTICLE and PARAGRAPH, that is
+	to say the "fragment" elements                -->
+	<xs:element name="DEFINITION">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attribute name="IDENTIFIER" use="required" type="leg:fragment_identifier" />
+					<xs:attribute name="obj" use="required" type="xs:IDREFS" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RIGHT">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attribute name="IDENTIFIER" use="required" type="leg:fragment_identifier" />
+					<xs:attribute name="bearer" use="required" type="xs:IDREFS" />
+					<xs:attribute name="target" use="required" type="xs:IDREFS" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OBLIGATION">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attributeGroup ref="leg:ire" />
+					<xs:attribute name="bearer" type="xs:IDREFS" use="required" /> <!---->
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PERMISSION">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attributeGroup ref="leg:ire" />
+					<xs:attribute name="bearer" type="xs:IDREFS" use="required" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PROHIBITION">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attributeGroup ref="leg:ire" />
+					<xs:attribute name="bearer" use="required" type="xs:IDREFS" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PENALTY">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="leg:fragment_base_group" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="REPARATION">
+		<xs:complexType mixed="true">
+			<!--			<xs:complexContent >
+				 	<xs:extension base="leg:fragment_base_type"> -->
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:choice>
+					<xs:element ref="leg:PENALTY"></xs:element>
+					<xs:group ref="leg:fragment_base_group"></xs:group>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="leg:ire" />
+			<xs:attribute name="repar" type="leg:fragment_identifier_list" use="required" />
+			<xs:attribute name="has_penalty" type="leg:fragment_identifier_list" />
+			<!--		 	</xs:extension> 
+			</xs:complexContent>  -->
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EXCEPTION">		<!-- separated from the element to which it excepts -->
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attribute name="IDENTIFIER" use="required" type="leg:fragment_identifier" />
+					<xs:attribute name="except" use="required" type="leg:fragment_identifier_list" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EXCEPT">		<!-- inside the element to which it excepts -->
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attribute name="is_except_list_header" type="xs:boolean" default="false" />
+					<xs:attribute name="is_except_list_items" type="xs:boolean" default="false" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="COMPLEMENT">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attributeGroup ref="leg:irre" />
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="procedure" />
+								<xs:enumeration value="text_specification" />
+								<xs:enumeration value="precision" />
+								<xs:enumeration value="validity" />
+								<xs:enumeration value="impact" />
+								<xs:enumeration value="default" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="POWER">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attributeGroup ref="leg:ire" />
+					<xs:attribute name="bearer" use="required" type="xs:IDREFS" />
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="ruling" />
+								<xs:enumeration value="execution" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ATTRIBUTION">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:fragment_base_type">
+					<xs:attributeGroup ref="leg:ire" />
+					<xs:attribute name="bearer" use="required" type="xs:IDREFS" />
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="competency" />
+								<xs:enumeration value="responsability" />
+								<xs:enumeration value="quality" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--	last type of marking in this serie, a text identifier which allows references to special
+	IDENTIFIERs -->
+	<xs:element name="TEXT_IDENTIFIER">
+		<xs:annotation>
+			<xs:documentation>To allow more abstract entity entries, just modify the attribute
+				IDENTIFIER to be of a simple type restricting leg:fragment_identifier through an
+				enumeration and add your new values to the patterns specifying the
+				fragment_identifier and fragment_identifier_list types.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="IDENTIFIER" type="leg:fragment_identifier" />
+		</xs:complexType>
+	</xs:element>
+	<!--   
+		Second the terminological elements, i.e. all what is needed to anotate entities   -->
+	<xs:element name="DICTIONARY"> <!-- each mention of an entity must reference an entry in a
+		dictionary -->
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="leg:PERSON_ENTRY" />
+				<xs:element ref="leg:CONCEPT_ENTRY" />
+				<xs:element ref="leg:LEGAL_ENTITY_ENTRY" />
+				<xs:element ref="leg:ABSTRACT_ENTITY_ENTRY" />
+			</xs:choice>
+			<!-- anyAttribute allows to define or inherit xmlns:leg in a dictionary which is in a
+			separate file -->
+			<xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
+		</xs:complexType>
+	</xs:element>
+	<!--	typed indentifiers and references to identifiers for the different types of entities -->
+	<xs:simpleType name="concept_id_type">
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="c_[A-Za-z_]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="concept_idref_type">
+		<xs:restriction base="xs:IDREF">
+			<xs:pattern value="c_[A-Za-z_]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="legal_entity_id_type">
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="le_[A-Za-z_]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="legal_entity_idref_type">
+		<xs:restriction base="xs:IDREF">
+			<xs:pattern value="le_[A-Za-z_]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="person_id_type">
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="p_[A-Za-z_]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="person_idref_type">
+		<xs:restriction base="xs:IDREF">
+			<xs:pattern value="p_[A-Za-z_]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="abstract_entity_id_type">
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="UNKNOWN|ALL|UNLISTED" />
+		</xs:restriction>
+	</xs:simpleType>
+	<!--	defining entities (entries in the distionary)  and marking their mentions in the text -->
+	<xs:element name="CONCEPT_ENTRY">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:no_text_entity_base_type">
+					<xs:attribute name="id" use="required" type="leg:concept_id_type" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CONCEPT">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:entity_base_type">
+					<xs:attribute name="ref" use="required" type="leg:concept_idref_type" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LEGAL_ENTITY_ENTRY">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:no_text_entity_base_type">
+					<xs:attribute name="id" use="required" type="leg:legal_entity_id_type" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LEGAL_ENTITY">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:entity_base_type">
+					<xs:attribute name="ref" use="required" type="leg:legal_entity_idref_type" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PERSON_ENTRY">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:no_text_entity_base_type">
+					<xs:attribute name="id" use="required" type="leg:person_id_type" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PERSON">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:entity_base_type">
+					<xs:attribute name="ref" use="required" type="leg:person_idref_type" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--	abstract entities -->
+	<xs:element name="ABSTRACT_ENTITY_ENTRY">
+		<xs:annotation>
+			<xs:documentation>To allow more abstract entity entries, just modify the attribute id to
+				be of a simple type restricting xs:ID through an enumeration and add these entries
+				in any dictionnary</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="leg:no_text_entity_base_type">
+					<xs:attribute name="id" type="leg:abstract_entity_id_type" use="required" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
