@@ -11,7 +11,7 @@ def transform_xml(xml_doc):
         
         yield dict
 
-tree = ET.parse('data.xml')
+tree = ET.parse('../data/schema.xsd')
 
 root = tree.getroot()
 

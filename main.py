@@ -1,16 +1,17 @@
-import tkinter as tk               
+import tkinter as tk
 from tkinter import font as tkfont
 import ttkbootstrap as tb
 from pages.collections_page import CollectionsPage
+from pages.home_page import HomePage
 
-from pages.home_page import HomePage 
 
 class App(tb.Window):
 
     def __init__(self):
         tb.Window.__init__(self)
 
-        self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
+        self.title_font = tkfont.Font(
+            family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry("800x600")
         self.resizable(False, False)
 
@@ -34,6 +35,7 @@ class App(tb.Window):
     def show_frame(self, page_name):
         frame = self.frames[page_name]
         frame.tkraise()
+
 
 if __name__ == "__main__":
     app = App()
