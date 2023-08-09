@@ -12,10 +12,13 @@ class App(tb.Window):
 
         self.title_font = tkfont.Font(
             family='Helvetica', size=18, weight="bold", slant="italic")
-        width= self.winfo_screenwidth()               
-        height= self.winfo_screenheight()               
-        self.geometry("%dx%d" % (width, height))
+        # width= self.winfo_screenwidth()               
+        # height= self.winfo_screenheight()               
+        # self.geometry("%dx%d" % (width, height))
         # self.resizable(False, False)
+
+        self.geometry("800x600")
+
 
         container = tb.Frame(self)
         container.pack(side="top", fill="both", expand=True)

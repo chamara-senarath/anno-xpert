@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import ttkbootstrap as tb
 from services.schema_processor import SchemaProcessor
+from services.xml_processor import XMLProcessor
 import re
 
 
@@ -33,6 +34,18 @@ class CollectionsPage(tb.Frame):
         label_dropdowns.pack(side='left', anchor='n')
         button_search_dropdown = tb.Button(self.dropdown_frame, text="Search")
         button_search_dropdown.pack(side='right', anchor='n')
+
+        # Results display
+        result_frame = tb.Frame(self)
+        result_frame.pack(pady=10)
+
+        scrollbar = tb.Scrollbar(result_frame)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        result_text = tb.Text(result_frame)
+        result_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        result_text.configure(state='disabled')
+
 
     def create_dropdowns(self,values):
         combo_box = tb.Combobox(self.dropdown_frame, width=14 ,values = [self.format_text(value) for value in values], state='readonly')
@@ -81,7 +94,9 @@ class CollectionsPage(tb.Frame):
         self.load_parent_dropdown()
 
     def load_data(self):
-        pass
+        xml_file = filedialog.askopenfilename(filetypes=[("XML Files", "*.xml")])
+        xml_processor = XMLProcessor(xml_file)
+        xml_processor.capture_paragraph('LegalRuleML/Statements/Statements')
 
     def format_text(self, input_text):
         formatted_name = re.sub(r'_', ' ', input_text)        
