@@ -9,23 +9,34 @@ class CollectionsPage(tb.Frame):
     def __init__(self, parent, controller):
         self.level = 2
         self.maximum_dropdowns = 3
+        self.combo_boxes = []
+
         tb.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tb.Label(self, text="This is page 1",font=controller.title_font)
-        label.pack(side="left", anchor='n', pady=10, padx=10, fill='x')
-        button_load_schema = tb.Button(self, text="Load Schema", command=self.load_schema)
-        button_load_data = tb.Button(self, text="Load Data", command=self.load_data)
-        button_load_data.pack(side="right",anchor='n',pady=10, padx=10,fill='x')
-        button_load_schema.pack(side="right",anchor='n',pady=10, padx=10, fill='x')
+        header_frame =  tb.Frame(self, padding=16)
+        header_frame.pack(fill=tk.BOTH)        
 
-        self.combo_boxes = []
+        label_header = tb.Label(header_frame, text="This is page 1",font=controller.title_font)
+        label_header.pack(side="left", anchor='n', fill=tk.X, expand=True)
+
+        button_load_schema = tb.Button(header_frame, text="Load Schema", command=self.load_schema)
+        button_load_data = tb.Button(header_frame, text="Load Data", command=self.load_data)
+        button_load_schema.pack(side="left", anchor='n',fill=tk.X, padx=10)
+        button_load_data.pack(side="left", anchor='n', fill=tk.X)
+
+        self.dropdown_frame = tb.Frame(self, padding=16)
+        self.dropdown_frame.pack(expand=True, fill=tk.BOTH)  
+        label_dropdowns = tb.Label(self.dropdown_frame, text="Select Elements: ")      
+        label_dropdowns.pack(side='left', anchor='n')
+        button_search_dropdown = tb.Button(self.dropdown_frame, text="Search")
+        button_search_dropdown.pack(side='right', anchor='n')
 
     def create_dropdowns(self,values):
-        combo_box = tb.Combobox(self, width=16 ,values = [self.format_text(value) for value in values], state='readonly')
+        combo_box = tb.Combobox(self.dropdown_frame, width=14 ,values = [self.format_text(value) for value in values], state='readonly')
         combo_box.bind('<<ComboboxSelected>>', lambda x: self.load_dependent_dropdown(combo_box))
         self.combo_boxes.append(combo_box)
-        combo_box.pack(side="left")
+        combo_box.pack(side="left",anchor='n', padx=10)
     
     def clear_dropdowns(self,combo_box=None):
         start = self.combo_boxes.index(combo_box)+1 if combo_box is not None else 0
@@ -43,13 +54,13 @@ class CollectionsPage(tb.Frame):
         if len(self.combo_boxes) >= self.maximum_dropdowns:
             return
 
-        item = self.schema_processor.get_nodes_by_level(self.level)[combo_box.current()]
+        item = self.schema_processor.get_nodes_by_level(self.combo_boxes.index(combo_box)+2)[combo_box.current()]
+
         if isinstance(item.get_attr("enumerations"), list) :
             values = item.get_attr("enumerations")
             self.create_dropdowns(values)
 
         if isinstance(item.children, tuple) and len(item.children) > 0:
-            print(item.children)
             values = [x.name for x in item.children]
             self.create_dropdowns(values)
 
