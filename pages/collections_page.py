@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import ttkbootstrap as tb
 from services.schema_processor import SchemaProcessor
+import re
 
 
 class CollectionsPage(tb.Frame):
@@ -10,6 +11,7 @@ class CollectionsPage(tb.Frame):
         self.level = 2
         self.maximum_dropdowns = 3
         self.combo_boxes = []
+        self.combo_box_node_map = {}
 
         tb.Frame.__init__(self, parent)
         self.controller = controller
@@ -46,6 +48,7 @@ class CollectionsPage(tb.Frame):
 
     def load_parent_dropdown(self):
         values = [x.name for x in self.schema_processor.get_nodes_by_level(self.level)]
+        self.combo_box_node_map[0] = self.schema_processor.get_nodes_by_level(self.level)
         self.create_dropdowns(values)
 
     def load_dependent_dropdown(self, combo_box):
@@ -53,16 +56,21 @@ class CollectionsPage(tb.Frame):
 
         if len(self.combo_boxes) >= self.maximum_dropdowns:
             return
+        
+        item = self.combo_box_node_map[self.combo_boxes.index(combo_box)][combo_box.current()]
 
-        item = self.schema_processor.get_nodes_by_level(self.combo_boxes.index(combo_box)+2)[combo_box.current()]
-
-        if isinstance(item.get_attr("enumerations"), list) :
+        if isinstance(item, str):
+            return 
+        if  isinstance(item.get_attr("enumerations"), list) :
             values = item.get_attr("enumerations")
+            self.combo_box_node_map[self.combo_boxes.index(combo_box)+1] = values
             self.create_dropdowns(values)
 
         if isinstance(item.children, tuple) and len(item.children) > 0:
             values = [x.name for x in item.children]
+            self.combo_box_node_map[self.combo_boxes.index(combo_box)+1] = item.children
             self.create_dropdowns(values)
+            
 
     def load_schema(self):
         self.clear_dropdowns()
@@ -76,7 +84,7 @@ class CollectionsPage(tb.Frame):
         pass
 
     def format_text(self, input_text):
-        words = input_text.split('_')
-        formatted_words = [word.capitalize() for word in words]
-        formatted_text = ' '.join(formatted_words)
-        return formatted_text
+        formatted_name = re.sub(r'_', ' ', input_text)        
+        formatted_name = re.sub(r'([a-z])([A-Z])', r'\1 \2', formatted_name)
+        formatted_name = formatted_name.title()
+        return formatted_name
