@@ -32,12 +32,13 @@ class CollectionsPage(tb.Frame):
         button_load_schema.pack(side="left", anchor='n',fill=tk.X, padx=10)
         button_load_data.pack(side="left", anchor='n', fill=tk.X)
 
+        # Dropdown area
         self.dropdown_frame = tb.Frame(self, padding=16)
         self.dropdown_frame.pack(fill=tk.BOTH)  
         label_dropdowns = tb.Label(self.dropdown_frame, text="Select Elements: ")      
         label_dropdowns.pack(side='left', anchor='n')
 
-
+        # Search area
         search_frame = tb.Frame(self,padding=16)
         search_frame.pack(fill=tk.BOTH)
         self.entry_search = tb.Entry(search_frame, width=50)
@@ -49,17 +50,19 @@ class CollectionsPage(tb.Frame):
         result_frame = tb.Frame(self)
         result_frame.pack(padx=16, pady=16,fill=tk.BOTH, expand=True)
 
-        canvas = tk.Canvas(result_frame)
+        canvas = tk.Canvas(result_frame, width=620)
         canvas.pack(side="left", fill="both", expand=True)
 
-        scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview)
-        scrollbar.pack(side="right", fill="y")
-        canvas.configure(yscrollcommand=scrollbar.set)
+        self.scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview)
+        canvas.configure(yscrollcommand=self.scrollbar.set)
 
         self.result_content_frame = tb.Frame(canvas)
         canvas.create_window((0, 0), window=self.result_content_frame, anchor="nw")
 
         self.result_content_frame.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
+
+        self.results_filters_frame = tb.Frame(result_frame)
+        self.results_filters_frame.pack(side="left", anchor='nw', padx=10, expand=True)
 
 
 
@@ -103,15 +106,30 @@ class CollectionsPage(tb.Frame):
     def clearFrame(self, frame):
         for widget in frame.winfo_children():
             widget.destroy()
-        frame.pack_forget()
 
+    def load_result_data_elements(self, elements):
+        if len(elements)==0:
+            data_label = tb.Label(self.result_content_frame, text="No Results Found")   
+            data_label.pack(fill="both", anchor="center")
+            self.scrollbar.pack_forget()
+        for element in elements:
+            data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5)
+            data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
+            data_label = tb.Label(data_label_frame, text=element['text'].strip(), wraplength=600)   
+            data_label.pack(fill="x", anchor='w')   
+            self.scrollbar.pack(side="left", fill="y")
 
-    def load_result_data_elements(self, element):
-        data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5)
-        data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
-        data_label = tb.Label(data_label_frame, text=element['text'].strip(), wraplength=600)   
-        data_label.pack(fill="x", anchor='w')   
+            for index, attribute in enumerate(element['attributes']):
+                attribute_label = tb.Label(data_label_frame,bootstyle="inverse-info", text=f"{attribute[0]}: {attribute[1]}", padding=2)
+                attribute_label.pack(side="left", anchor='w', padx=0 if index==0 else 5, pady=2)
         
+    def load_result_filters(self, elements):
+        element_set = set()
+        for element in elements:
+            if element['local_name'] not in element_set:
+                element_set.add(element['local_name'])
+                filter_button = tb.Button(self.results_filters_frame, text=element['local_name'], bootstyle="outline-success")   
+                filter_button.pack(fill="x", anchor='w', pady=10)
 
     def load_schema(self):
         self.clear_dropdowns()
@@ -133,10 +151,11 @@ class CollectionsPage(tb.Frame):
     
     def handle_search(self):
         self.clearFrame(self.result_content_frame)
+        self.clearFrame(self.results_filters_frame)
         if not self.xml_processor : return
         query = self.entry_search.get().strip()
         if not query: return
         results = self.xml_processor.query_xml(query)
-        if len(results):
-            for i in results:
-                self.load_result_data_elements(i)
+
+        self.load_result_filters(results)
+        self.load_result_data_elements(results)
