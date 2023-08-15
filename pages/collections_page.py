@@ -11,9 +11,13 @@ class CollectionsPage(tb.Frame):
     def __init__(self, parent, controller):
         self.level = 2
         self.maximum_dropdowns = 3
+        self.schema_processor = None
+        self.xml_processor = None
+
         self.combo_boxes = []
         self.combo_box_node_map = {}
-
+        self.entry_search = None
+        
         tb.Frame.__init__(self, parent)
         self.controller = controller
 
@@ -29,22 +33,34 @@ class CollectionsPage(tb.Frame):
         button_load_data.pack(side="left", anchor='n', fill=tk.X)
 
         self.dropdown_frame = tb.Frame(self, padding=16)
-        self.dropdown_frame.pack(expand=True, fill=tk.BOTH)  
+        self.dropdown_frame.pack(fill=tk.BOTH)  
         label_dropdowns = tb.Label(self.dropdown_frame, text="Select Elements: ")      
         label_dropdowns.pack(side='left', anchor='n')
-        button_search_dropdown = tb.Button(self.dropdown_frame, text="Search")
-        button_search_dropdown.pack(side='right', anchor='n')
+
+
+        search_frame = tb.Frame(self,padding=16)
+        search_frame.pack(fill=tk.BOTH)
+        self.entry_search = tb.Entry(search_frame, width=50)
+        self.entry_search.pack(side='left', anchor='n')
+        button_search = tb.Button(search_frame, text="Search", command=self.handle_search)
+        button_search.pack(side='right', anchor='n')
 
         # Results display
         result_frame = tb.Frame(self)
-        result_frame.pack(pady=10)
+        result_frame.pack(padx=16, pady=16,fill=tk.BOTH, expand=True)
 
-        scrollbar = tb.Scrollbar(result_frame)
-        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        canvas = tk.Canvas(result_frame)
+        canvas.pack(side="left", fill="both", expand=True)
 
-        result_text = tb.Text(result_frame)
-        result_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        result_text.configure(state='disabled')
+        scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview)
+        scrollbar.pack(side="right", fill="y")
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        self.result_content_frame = tb.Frame(canvas)
+        canvas.create_window((0, 0), window=self.result_content_frame, anchor="nw")
+
+        self.result_content_frame.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
+
 
 
     def create_dropdowns(self,values):
@@ -83,23 +99,43 @@ class CollectionsPage(tb.Frame):
             values = [x.name for x in item.children]
             self.combo_box_node_map[self.combo_boxes.index(combo_box)+1] = item.children
             self.create_dropdowns(values)
-            
+
+    def clearFrame(self, frame):
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame.pack_forget()
+
+
+    def load_result_data_elements(self, element):
+        data_label_frame = tb.LabelFrame(self.result_content_frame, text="Results", padding=10)
+        data_label_frame.pack(side="top", anchor='w', fill="x")
+        data_label = tb.Label(data_label_frame, text=element.text.strip(), wraplength=600)   
+        data_label.pack(fill="x", pady=10, padx=10, anchor='w')   
+        
 
     def load_schema(self):
         self.clear_dropdowns()
         schema_file = filedialog.askopenfilename(filetypes=[("XSD Files", "*.xsd")])
-        if not schema_file:
-            return
+        if not schema_file: return
         self.schema_processor = SchemaProcessor(schema_file)
         self.load_parent_dropdown()
 
     def load_data(self):
         xml_file = filedialog.askopenfilename(filetypes=[("XML Files", "*.xml")])
-        xml_processor = XMLProcessor(xml_file)
-        xml_processor.capture_paragraph('LegalRuleML/Statements/Statements')
+        if not xml_file: return
+        self.xml_processor = XMLProcessor(xml_file)
 
     def format_text(self, input_text):
         formatted_name = re.sub(r'_', ' ', input_text)        
         formatted_name = re.sub(r'([a-z])([A-Z])', r'\1 \2', formatted_name)
         formatted_name = formatted_name.title()
         return formatted_name
+    
+    def handle_search(self):
+        if not self.xml_processor : return
+        query = self.entry_search.get().strip()
+        results = self.xml_processor.query_xml(query)
+        if len(results):
+            self.clearFrame(self.result_content_frame)
+            for i in results:
+                self.load_result_data_elements(i)
