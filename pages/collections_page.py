@@ -107,10 +107,10 @@ class CollectionsPage(tb.Frame):
 
 
     def load_result_data_elements(self, element):
-        data_label_frame = tb.LabelFrame(self.result_content_frame, text="Results", padding=10)
-        data_label_frame.pack(side="top", anchor='w', fill="x")
-        data_label = tb.Label(data_label_frame, text=element.text.strip(), wraplength=600)   
-        data_label.pack(fill="x", pady=10, padx=10, anchor='w')   
+        data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5)
+        data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
+        data_label = tb.Label(data_label_frame, text=element['text'].strip(), wraplength=600)   
+        data_label.pack(fill="x", anchor='w')   
         
 
     def load_schema(self):
@@ -132,10 +132,11 @@ class CollectionsPage(tb.Frame):
         return formatted_name
     
     def handle_search(self):
+        self.clearFrame(self.result_content_frame)
         if not self.xml_processor : return
         query = self.entry_search.get().strip()
+        if not query: return
         results = self.xml_processor.query_xml(query)
         if len(results):
-            self.clearFrame(self.result_content_frame)
             for i in results:
                 self.load_result_data_elements(i)

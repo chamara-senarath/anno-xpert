@@ -17,4 +17,13 @@ class XMLProcessor:
                 results.append(element)
             if query in element.text:
                 results.append(element)
-        return results
+        return self.structured_results(results)
+    
+    def structured_results(self, results):
+        structured_results = []
+        for result in results:
+            local_name = ET.QName(result).localname if ET.QName(result).localname else ''
+            text = result.text
+            attributes = result.items()
+            structured_results.append({'local_name': local_name, 'text': text, 'attributes': attributes})
+        return structured_results
