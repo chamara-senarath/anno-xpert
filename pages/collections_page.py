@@ -67,8 +67,9 @@ class CollectionsPage(tb.Frame):
 
 
 
-    def create_dropdowns(self,values):
-        combo_box = tb.Combobox(self.dropdown_frame, width=14 ,values = [self.format_text(value) for value in values], state='readonly')
+    def create_dropdowns(self,values, is_enum=False):
+        bootstyle = "warning" if is_enum else "success"
+        combo_box = tb.Combobox(self.dropdown_frame, width=14 ,values = [self.format_text(value) for value in values], state='readonly', bootstyle=bootstyle)
         combo_box.bind('<<ComboboxSelected>>', lambda x: self.load_dependent_dropdown(combo_box))
         self.combo_boxes.append(combo_box)
         combo_box.pack(side="left",anchor='n', padx=10)
@@ -97,7 +98,7 @@ class CollectionsPage(tb.Frame):
         if  isinstance(item.get_attr("enumerations"), list) :
             values = item.get_attr("enumerations")
             self.combo_box_node_map[self.combo_boxes.index(combo_box)+1] = values
-            self.create_dropdowns(values)
+            self.create_dropdowns(values, True)
 
         if isinstance(item.children, tuple) and len(item.children) > 0:
             values = [x.name for x in item.children]
@@ -164,8 +165,18 @@ class CollectionsPage(tb.Frame):
     def handle_search(self):
         if not self.xml_processor : return
         query = self.entry_search.get().strip()
-        filters = [i.get() for i in self.combo_boxes if i.get()]
-        results = self.xml_processor.query_xml(query, filters)
+        enums = []
+        filters = []
+        for i in range(len(self.combo_boxes)):
+            if self.combo_boxes[i].configure("bootstyle") == 'warning.TCombobox':
+                enums.append({
+                    'parent': self.combo_boxes[i-1].get(),
+                    'enum': self.combo_boxes[i].get()
+                })
+            else:
+                filters.append(self.combo_boxes[i].get())
+        
+        results = self.xml_processor.query_xml(query, filters, enums)
 
         self.load_result_filters(results)
         self.load_result_data_elements(results)

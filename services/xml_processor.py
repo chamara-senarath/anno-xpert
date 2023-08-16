@@ -5,12 +5,14 @@ class XMLProcessor:
     def __init__(self, xml_file) -> None:
         self.tree = ET.parse(xml_file)
 
-    def query_xml(self,query, filters):
+    def query_xml(self,query, filters, enums):
+        filters = [item for item in filters if item != ""]
+        enums = [item for item in enums if item != ""]
         query_results = []
         dropdown_results=[]
 
         if filters:
-            dropdown_results = self.get_results_by_tag_filters(filters)
+            dropdown_results = self.get_results_by_tag_filters(filters, enums)
         if query:
             for _, element in ET.iterwalk(self.tree.getroot()):
                 if element.text is None:
@@ -39,9 +41,9 @@ class XMLProcessor:
             attributes = result.items()
             ancestors = ' > '.join([ET.QName(e).localname for e in result.xpath("ancestor-or-self::*")])
             structured_results.append({'local_name': local_name, 'text': text, 'attributes': attributes, 'ancestors':ancestors})
-        return structured_results
+        return [item for item in structured_results if item['text'].strip() != ""]
     
-    def get_results_by_tag_filters(self, filters):
+    def get_results_by_tag_filters(self, filters, enums):
         results = []
         for _, element in ET.iterwalk(self.tree.getroot()):
             if element.text is None:
@@ -49,7 +51,7 @@ class XMLProcessor:
             root = [ET.QName(e).localname for e in element.xpath("ancestor-or-self::*")]
             if XMLProcessor.check_hierarchical_order(filters, root):
                 results.append(element)
-        return results
+        return self.filter_results_by_enumerations(results, enums)
     
     
     def check_hierarchical_order(filters, tree):
@@ -62,4 +64,20 @@ class XMLProcessor:
             if filter_index == len(filters):
                 return True
         
-        return False  
+        return False 
+    
+    def filter_results_by_enumerations(self, results ,enums):
+        if not enums:
+            return results
+
+        enum_lookup = {(enum['parent'].lower(), enum['enum'].lower()) for enum in enums}
+        filtered_results = []
+
+        for result in results:
+            result_localname = ET.QName(result).localname.lower()
+            result_type = result.attrib.get('type', '').lower()
+
+            if (result_localname, result_type) in enum_lookup:
+                filtered_results.append(result)
+
+        return filtered_results
