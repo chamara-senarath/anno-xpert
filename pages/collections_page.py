@@ -17,7 +17,8 @@ class CollectionsPage(tb.Frame):
         self.combo_boxes = []
         self.combo_box_node_map = {}
         self.entry_search = None
-        
+        self.applied_filters = []
+
         tb.Frame.__init__(self, parent)
         self.controller = controller
 
@@ -50,7 +51,7 @@ class CollectionsPage(tb.Frame):
         result_frame = tb.Frame(self)
         result_frame.pack(padx=16, pady=16,fill=tk.BOTH, expand=True)
 
-        canvas = tk.Canvas(result_frame, width=620)
+        canvas = tk.Canvas(result_frame, width=780)
         canvas.pack(side="left", fill="both", expand=True)
 
         self.scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview)
@@ -62,7 +63,7 @@ class CollectionsPage(tb.Frame):
         self.result_content_frame.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
 
         self.results_filters_frame = tb.Frame(result_frame)
-        self.results_filters_frame.pack(side="left", anchor='nw', padx=10, expand=True)
+        self.results_filters_frame.pack(side="right", anchor='center', padx=10, expand=True)
 
 
 
@@ -108,6 +109,7 @@ class CollectionsPage(tb.Frame):
             widget.destroy()
 
     def load_result_data_elements(self, elements):
+        self.clearFrame(self.result_content_frame)
         if len(elements)==0:
             data_label = tb.Label(self.result_content_frame, text="No Results Found")   
             data_label.pack(fill="both", anchor="center")
@@ -115,7 +117,7 @@ class CollectionsPage(tb.Frame):
         for element in elements:
             data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5)
             data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
-            data_label = tb.Label(data_label_frame, text=element['text'].strip(), wraplength=600)   
+            data_label = tb.Label(data_label_frame, text=element['text'].strip(), wraplength=750)   
             data_label.pack(fill="x", anchor='w')   
             self.scrollbar.pack(side="left", fill="y")
 
@@ -124,15 +126,18 @@ class CollectionsPage(tb.Frame):
                 attribute_label.pack(side="left", anchor='w', padx=0 if index==0 else 5, pady=2)
         
     def load_result_filters(self, elements):
+        self.clearFrame(self.results_filters_frame)
         element_set = set()
         for element in elements:
             if element['local_name'] not in element_set:
                 element_set.add(element['local_name'])
-                filter_button = tb.Button(self.results_filters_frame, text=element['local_name'], bootstyle="outline-success")   
+                filter_button = tb.Button(self.results_filters_frame, text=element['local_name'], bootstyle="success-outline")   
+                filter_button.config(command=lambda btn=filter_button, results=elements: self.apply_filter(btn,results))
                 filter_button.pack(fill="x", anchor='w', pady=10)
 
     def load_schema(self):
         self.clear_dropdowns()
+        self.clear_result_section()
         schema_file = filedialog.askopenfilename(filetypes=[("XSD Files", "*.xsd")])
         if not schema_file: return
         self.schema_processor = SchemaProcessor(schema_file)
@@ -150,8 +155,6 @@ class CollectionsPage(tb.Frame):
         return formatted_name
     
     def handle_search(self):
-        self.clearFrame(self.result_content_frame)
-        self.clearFrame(self.results_filters_frame)
         if not self.xml_processor : return
         query = self.entry_search.get().strip()
         if not query: return
@@ -159,3 +162,27 @@ class CollectionsPage(tb.Frame):
 
         self.load_result_filters(results)
         self.load_result_data_elements(results)
+
+    def apply_filter(self, button, results):        
+        filter = button.config('text')[-1]
+        if filter in self.applied_filters:
+            self.applied_filters.remove(filter)
+            button.config(bootstyle="success-outline")
+        else:
+            self.applied_filters.append(filter)
+            button.config(bootstyle="success")
+            
+        self.update_result_with_filters(results)
+
+    def update_result_with_filters(self, results):
+        if not self.applied_filters: 
+            self.load_result_data_elements(results)
+            return 
+        results = [element for element in results if element['local_name'] in self.applied_filters]
+        self.load_result_data_elements(results)
+
+    def clear_result_section(self):
+        self.applied_filters = []
+        self.clearFrame(self.result_content_frame)
+        self.clearFrame(self.results_filters_frame)
+        
