@@ -164,8 +164,8 @@ class CollectionsPage(tb.Frame):
     def handle_search(self):
         if not self.xml_processor : return
         query = self.entry_search.get().strip()
-        if not query: return
-        results = self.xml_processor.query_xml(query)
+        filters = [i.get() for i in self.combo_boxes if i.get()]
+        results = self.xml_processor.query_xml(query, filters)
 
         self.load_result_filters(results)
         self.load_result_data_elements(results)
