@@ -25,5 +25,28 @@ class XMLProcessor:
             local_name = ET.QName(result).localname if ET.QName(result).localname else ''
             text = result.text
             attributes = result.items()
-            structured_results.append({'local_name': local_name, 'text': text, 'attributes': attributes})
+            ancestors = ' > '.join([ET.QName(e).localname for e in result.xpath("ancestor::*")]) + ' > ' + local_name
+            structured_results.append({'local_name': local_name, 'text': text, 'attributes': attributes, 'ancestors':ancestors})
         return structured_results
+    
+    def get_results_by_tag_filters(self, filters):
+        results = []
+        for event, element in ET.iterwalk(self.tree.getroot()):
+            if element.text is None:
+                  continue
+            if XMLProcessor.check_hierarchical_order(filters, element):
+                results.append(element)
+        return self.structured_results(results)
+    
+    
+    def check_hierarchical_order(filters, tree):
+        filter_index = 0  
+        
+        for element in tree:
+            if filter_index < len(filters) and element == filters[filter_index]:
+                filter_index += 1  
+            
+            if filter_index == len(filters):
+                return True
+        
+        return False  

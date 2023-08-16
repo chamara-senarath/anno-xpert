@@ -121,10 +121,17 @@ class CollectionsPage(tb.Frame):
             data_label.pack(fill="x", anchor='w')   
             self.scrollbar.pack(side="left", fill="y")
 
+            attribute_frame = tb.Frame(data_label_frame)
+            attribute_frame.pack(side="top", anchor='w', fill="x", pady=2)
             for index, attribute in enumerate(element['attributes']):
-                attribute_label = tb.Label(data_label_frame,bootstyle="inverse-info", text=f"{attribute[0]}: {attribute[1]}", padding=2)
-                attribute_label.pack(side="left", anchor='w', padx=0 if index==0 else 5, pady=2)
-        
+                attribute_label = tb.Label(attribute_frame,bootstyle="inverse-info", text=f"{attribute[0]}: {attribute[1]}", padding=2)
+                attribute_label.pack(side="left", anchor='w', padx=0 if index==0 else 5)
+
+            ancestors_frame = tb.Frame(data_label_frame)
+            ancestors_frame.pack(side="top", anchor='w', fill="x", pady=2)
+            ancestors_label = tb.Label(ancestors_frame,bootstyle="inverse-secondary", text=f"{element['ancestors']}", padding=2)
+            ancestors_label.pack(anchor='w')  
+
     def load_result_filters(self, elements):
         self.clearFrame(self.results_filters_frame)
         element_set = set()
