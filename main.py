@@ -17,7 +17,7 @@ class App(tb.Window):
         # self.resizable(False, False)
 
         self.geometry("1280x720")
-        self.minsize(width=1000, height=600)
+        self.minsize(width=1080, height=600)
 
 
         container = tb.Frame(self)

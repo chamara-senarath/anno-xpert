@@ -65,6 +65,8 @@ class CollectionsPage(tb.Frame):
         self.results_filters_frame = tb.Frame(result_frame)
         self.results_filters_frame.pack(side="right", anchor='center', padx=10, expand=True)
 
+        self.results_canvas = canvas
+
 
 
     def create_dropdowns(self,values, is_enum=False):
@@ -111,6 +113,7 @@ class CollectionsPage(tb.Frame):
 
     def load_result_data_elements(self, elements):
         self.clearFrame(self.result_content_frame)
+        self.results_canvas.yview_moveto(0)
         if len(elements)==0:
             data_label = tb.Label(self.result_content_frame, text="No Results Found")   
             data_label.pack(fill="both", anchor="center")
@@ -144,9 +147,10 @@ class CollectionsPage(tb.Frame):
         for element in elements:
             if element['local_name'] not in element_set:
                 element_set.add(element['local_name'])
-                filter_button = tb.Button(self.results_filters_frame, text=element['local_name'], bootstyle="success-outline")   
-                filter_button.config(command=lambda btn=filter_button, results=elements: self.apply_filter(btn,results))
-                filter_button.pack(fill="x", anchor='w', pady=10)
+        for index, element in enumerate(sorted(element_set)):
+            filter_button = tb.Button(self.results_filters_frame, text=element, bootstyle="success-outline")   
+            filter_button.config(command=lambda btn=filter_button, results=elements: self.apply_filter(btn,results))
+            filter_button.grid(row= index // 2, column=index % 2, sticky='nsew', padx=5, pady=5)
 
     def load_schema(self):
         self.clear_dropdowns()
