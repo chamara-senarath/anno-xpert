@@ -25,7 +25,7 @@ class CollectionsPage(tb.Frame):
         header_frame =  tb.Frame(self, padding=16)
         header_frame.pack(fill=tk.BOTH)        
 
-        label_header = tb.Label(header_frame, text="This is page 1",font=controller.title_font)
+        label_header = tb.Label(header_frame, text="AnnoXpert",font=controller.title_font)
         label_header.pack(side="left", anchor='n', fill=tk.X, expand=True)
 
         button_load_schema = tb.Button(header_frame, text="Load Schema", command=self.load_schema)
@@ -59,7 +59,10 @@ class CollectionsPage(tb.Frame):
         fuzzy_level_label.pack(side='left', anchor='center')
         fuzzy_level_scale.config(command=lambda value: fuzzy_level_label.config(text=int(float(value))))
 
-        button_search = tb.Button(search_frame, text="Search", command=lambda:self.handle_search(is_case_sensitive=is_case_sensitive.get(), fuzzy_level=fuzzy_level.get()))
+        button_reset_search = tb.Button(search_frame, text="Reset Search", bootstyle="dark-outline" ,command=lambda:self.reset_search(is_case_sensitive,fuzzy_level_scale))
+        button_reset_search.pack(side='left', anchor='center', padx=20)
+
+        button_search = tb.Button(search_frame, text="Search", width=20, command=lambda:self.handle_search(is_case_sensitive=is_case_sensitive.get(), fuzzy_level=fuzzy_level.get()))
         button_search.pack(side='right', anchor='n')
 
         # Results display
@@ -83,6 +86,12 @@ class CollectionsPage(tb.Frame):
         self.results_canvas = canvas
 
 
+    def reset_search(self,is_case_sensitive,fuzzy_level_scale):
+        self.entry_search.delete(0, tk.END)
+        is_case_sensitive.set(False)
+        fuzzy_level_scale.set(8)
+        
+        
 
     def create_dropdowns(self,values, is_enum=False):
         bootstyle = "warning" if is_enum else "success"

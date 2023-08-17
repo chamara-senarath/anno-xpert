@@ -10,7 +10,8 @@ class App(tb.Window):
     def __init__(self):
         tb.Window.__init__(self)
 
-        self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
+        self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold")
+        self.title("AnnoXpert")
         # width= self.winfo_screenwidth()               
         # height= self.winfo_screenheight()               
         # self.geometry("%dx%d" % (width, height))
