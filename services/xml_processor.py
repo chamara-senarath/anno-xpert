@@ -22,7 +22,7 @@ class XMLProcessor:
                 found = fs.get(query)
                 if found is not None and found[0][0] > 0.8:
                     query_results.append(element)
-                if query in element.text:
+                elif query in element.text:
                     query_results.append(element)
         
         if not query_results:
