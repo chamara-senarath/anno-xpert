@@ -116,10 +116,15 @@ class CollectionsPage(tb.Frame):
             data_label.pack(fill="both", anchor="center")
             self.scrollbar.pack_forget()
         for element in elements:
-            data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5)
+            data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5, bootstyle="info")
             data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
-            data_label = tb.Label(data_label_frame, text=element['text'].strip(), wraplength=750)   
-            data_label.pack(fill="x", anchor='w')   
+            
+            data_label = tb.Text(data_label_frame, highlightthickness=0, wrap="word")
+            data_label.insert('1.0',element['text'].strip())   
+            data_label.configure(state="disabled")
+            data_label.configure(height=len(data_label.get("1.0", "end-1c"))/80)
+
+            data_label.pack()   
             self.scrollbar.pack(side="left", fill="y")
 
             attribute_frame = tb.Frame(data_label_frame)

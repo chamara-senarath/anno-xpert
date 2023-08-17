@@ -7,7 +7,7 @@ class XMLProcessor:
 
     def query_xml(self,query, filters, enums):
         filters = [item for item in filters if item != ""]
-        enums = [item for item in enums if item != ""]
+        enums = [item for item in enums if item['enum'] != ""]
         query_results = []
         dropdown_results=[]
 
