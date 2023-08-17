@@ -44,7 +44,22 @@ class CollectionsPage(tb.Frame):
         search_frame.pack(fill=tk.BOTH)
         self.entry_search = tb.Entry(search_frame, width=50)
         self.entry_search.pack(side='left', anchor='n')
-        button_search = tb.Button(search_frame, text="Search", command=self.handle_search)
+
+        tb.Label(search_frame, text="Case Sensitive").pack(side='left', anchor='center', padx=5)
+        is_case_sensitive = tb.BooleanVar()
+        case_sensitive_toggle = tb.Checkbutton(search_frame,bootstyle="round-toggle", variable=is_case_sensitive)
+        case_sensitive_toggle.pack(side='left', anchor='center', padx=5)
+
+        tb.Label(search_frame, text="Match Level").pack(side='left', anchor='center', padx=5)
+        fuzzy_level = tb.IntVar()
+        fuzzy_level.set(8)
+        fuzzy_level_scale = tb.Scale(search_frame, from_=1, to=10, value=8, variable=fuzzy_level)
+        fuzzy_level_scale.pack(side='left', anchor='center', padx=5)
+        fuzzy_level_label = tb.Label(search_frame, text=fuzzy_level.get())
+        fuzzy_level_label.pack(side='left', anchor='center')
+        fuzzy_level_scale.config(command=lambda value: fuzzy_level_label.config(text=int(float(value))))
+
+        button_search = tb.Button(search_frame, text="Search", command=lambda:self.handle_search(is_case_sensitive=is_case_sensitive.get(), fuzzy_level=fuzzy_level.get()))
         button_search.pack(side='right', anchor='n')
 
         # Results display
@@ -54,7 +69,7 @@ class CollectionsPage(tb.Frame):
         canvas = tk.Canvas(result_frame, width=780)
         canvas.pack(side="left", fill="both", expand=True)
 
-        self.scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview)
+        self.scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview, bootstyle="round")
         canvas.configure(yscrollcommand=self.scrollbar.set)
 
         self.result_content_frame = tb.Frame(canvas)
@@ -122,7 +137,7 @@ class CollectionsPage(tb.Frame):
             data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5, bootstyle="info")
             data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
             
-            data_label = tb.Text(data_label_frame, highlightthickness=0, wrap="word")
+            data_label = tb.Text(data_label_frame, wrap="word")
             data_label.insert('1.0',element['text'].strip())   
             data_label.configure(state="disabled")
             data_label.configure(height=len(data_label.get("1.0", "end-1c"))/80)
@@ -171,7 +186,7 @@ class CollectionsPage(tb.Frame):
         formatted_name = formatted_name.title()
         return formatted_name
     
-    def handle_search(self):
+    def handle_search(self, is_case_sensitive, fuzzy_level):
         if not self.xml_processor : return
         query = self.entry_search.get().strip()
         enums = []
@@ -185,7 +200,7 @@ class CollectionsPage(tb.Frame):
             else:
                 filters.append(self.combo_boxes[i].get())
         
-        results = self.xml_processor.query_xml(query, filters, enums)
+        results = self.xml_processor.query_xml(query, filters, enums, is_case_sensitive, fuzzy_level)
 
         self.load_result_filters(results)
         self.load_result_data_elements(results)

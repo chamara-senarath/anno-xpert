@@ -5,7 +5,7 @@ class XMLProcessor:
     def __init__(self, xml_file) -> None:
         self.tree = ET.parse(xml_file)
 
-    def query_xml(self,query, filters, enums):
+    def query_xml(self,query, filters, enums, is_case_sensitive, fuzzy_level):
         filters = [item for item in filters if item != ""]
         enums = [item for item in enums if item['enum'] != ""]
         query_results = []
@@ -20,14 +20,17 @@ class XMLProcessor:
                 corpus = [line.lstrip() for line in element.text.split("\n")]
                 fs = FuzzySet(corpus)
                 found = fs.get(query)
-                if found is not None and found[0][0] > 0.8:
+                if found is not None and found[0][0] > 0.1 * fuzzy_level:
                     query_results.append(element)
-                elif query in element.text:
+                elif not is_case_sensitive and query.lower() in element.text.lower():
                     query_results.append(element)
+                elif is_case_sensitive and query in element.text:
+                    query_results.append(element)
+                    
         
-        if not query_results:
+        if not query:
             return self.structured_results(dropdown_results)
-        elif not dropdown_results:
+        if not filters:
             return self.structured_results(query_results)
         
         merged_results = list(set(query_results).intersection(set(dropdown_results)))
