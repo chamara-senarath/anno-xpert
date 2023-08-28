@@ -18,6 +18,7 @@ class CollectionsPage(tb.Frame):
         self.combo_box_node_map = {}
         self.entry_search = None
         self.applied_filters = []
+        self.current_page_number = 1
 
         tb.Frame.__init__(self, parent)
         self.controller = controller
@@ -62,8 +63,8 @@ class CollectionsPage(tb.Frame):
         button_reset_search = tb.Button(search_frame, text="Reset Search", bootstyle="dark-outline" ,command=lambda:self.reset_search(is_case_sensitive,fuzzy_level_scale))
         button_reset_search.pack(side='left', anchor='center', padx=20)
 
-        button_search = tb.Button(search_frame, text="Search", width=20, command=lambda:self.handle_search(is_case_sensitive=is_case_sensitive.get(), fuzzy_level=fuzzy_level.get()))
-        button_search.pack(side='right', anchor='n')
+        self.button_search = tb.Button(search_frame, text="Search", width=20, command=lambda:self.handle_search(is_case_sensitive=is_case_sensitive.get(), fuzzy_level=fuzzy_level.get()))
+        self.button_search.pack(side='right', anchor='n')
 
         # Results display
         result_frame = tb.Frame(self)
@@ -86,6 +87,10 @@ class CollectionsPage(tb.Frame):
         self.results_filters_frame.pack(side="right", anchor='center', padx=10, expand=True)
 
         self.results_canvas = canvas
+
+        # Pagination
+        self.pagination_frame = tb.Frame(self)
+        self.pagination_frame.pack(padx=16, pady=16, fill="both", expand=True)
 
 
     def reset_search(self,is_case_sensitive,fuzzy_level_scale):
@@ -133,19 +138,34 @@ class CollectionsPage(tb.Frame):
             self.combo_box_node_map[self.combo_boxes.index(combo_box)+1] = item.children
             self.create_dropdowns(values)
 
-    def clearFrame(self, frame):
+    def clear_frame(self, frame):
         for widget in frame.winfo_children():
             widget.destroy()
 
     def load_result_data_elements(self, elements):
-        self.clearFrame(self.result_content_frame)
+        self.clear_frame(self.result_content_frame)
         self.results_canvas.yview_moveto(0)
         if len(elements)==0:
             data_label = tb.Label(self.result_content_frame, text="No Results Found")   
             data_label.pack(fill="both", anchor="center")
             self.scrollbar.pack_forget()
-        self.results_count_label["text"] = f"{len(elements)} results found"
-        for element in elements:
+        
+        page_start = (self.current_page_number-1)*100
+        page_end = self.current_page_number*100
+        if len(elements) > 100:
+            self.results_count_label["text"] =  f"Showing {page_start+1} - {page_end} of {len(elements)} results"
+
+        elif len(elements):
+            self.results_count_label["text"] =  f"Showing {len(elements)} results"
+        
+        else:
+            self.results_count_label["text"] = ""
+
+        self.load_pagination_bar((len(elements) // 100).__ceil__(), elements)
+
+        partitioned_elements = elements[page_start: page_end]
+
+        for element in partitioned_elements:
             data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5, bootstyle="info")
             data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
             
@@ -169,7 +189,7 @@ class CollectionsPage(tb.Frame):
             ancestors_label.pack(anchor='w')  
 
     def load_result_filters(self, elements):
-        self.clearFrame(self.results_filters_frame)
+        self.clear_frame(self.results_filters_frame)
         element_set = set()
         for element in elements:
             if element['local_name'] not in element_set:
@@ -177,8 +197,23 @@ class CollectionsPage(tb.Frame):
         for index, element in enumerate(sorted(element_set)):
             filter_button = tb.Button(self.results_filters_frame, text=element, bootstyle="success-outline")   
             filter_button.config(command=lambda btn=filter_button, results=elements: self.apply_filter(btn,results))
-            filter_button.grid(row= index // 2, column=index % 2, sticky='nsew', padx=5, pady=5)
+            filter_button.grid(row= index // 2, column=index % 2, sticky='nsew', padx=5, pady=5)        
 
+    def handle_pagination_click(self, page_number, elements):
+        self.current_page_number = page_number
+        self.load_result_data_elements(elements)
+
+    def load_pagination_bar(self, page_count, elements):
+        self.clear_frame(self.pagination_frame)
+        if not len(elements): return 
+        for i in range(1,page_count+2):
+            page_button = tb.Button(self.pagination_frame, text=i, bootstyle="outline")
+            page_button.configure(command=lambda page=i, el=elements: self.handle_pagination_click(page, el))
+            page_button.pack(side="left", padx=2)
+            if i == self.current_page_number:
+                page_button.configure(bootstyle="default")
+            
+        
     def load_schema(self):
         self.clear_dropdowns()
         self.clear_result_section()
@@ -214,6 +249,7 @@ class CollectionsPage(tb.Frame):
         
         results = self.xml_processor.query_xml(query, filters, enums, is_case_sensitive, fuzzy_level)
 
+        self.current_page_number = 1
         self.load_result_filters(results)
         self.load_result_data_elements(results)
 
@@ -229,6 +265,7 @@ class CollectionsPage(tb.Frame):
         self.update_result_with_filters(results)
 
     def update_result_with_filters(self, results):
+        self.current_page_number = 1
         if not self.applied_filters: 
             self.load_result_data_elements(results)
             return 
@@ -237,6 +274,6 @@ class CollectionsPage(tb.Frame):
 
     def clear_result_section(self):
         self.applied_filters = []
-        self.clearFrame(self.result_content_frame)
-        self.clearFrame(self.results_filters_frame)
+        self.clear_frame(self.result_content_frame)
+        self.clear_frame(self.results_filters_frame)
         
