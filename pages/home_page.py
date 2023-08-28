@@ -60,8 +60,8 @@ class HomePage(tb.Frame):
         fuzzy_level_label.pack(side='left', anchor='center')
         fuzzy_level_scale.config(command=lambda value: fuzzy_level_label.config(text=int(float(value))))
 
-        button_reset_search = tb.Button(search_frame, text="Reset Search", bootstyle="dark-outline" ,command=lambda:self.reset_search(is_case_sensitive,fuzzy_level_scale))
-        button_reset_search.pack(side='left', anchor='center', padx=20)
+        self.button_reset_search = tb.Button(search_frame, text="Reset Search", bootstyle="dark-outline" ,command=lambda:self.reset_search(is_case_sensitive,fuzzy_level_scale))
+        self.button_reset_search.pack(side='left', anchor='center', padx=20)
 
         self.button_search = tb.Button(search_frame, text="Search", width=20, command=lambda:self.handle_search(is_case_sensitive=is_case_sensitive.get(), fuzzy_level=fuzzy_level.get()))
         self.button_search.pack(side='right', anchor='n')
@@ -72,7 +72,7 @@ class HomePage(tb.Frame):
         self.results_count_label = tb.Label(result_frame, text="")   
         self.results_count_label.pack(fill="both", anchor="center", pady=4)
 
-        canvas = tk.Canvas(result_frame, width=780)
+        canvas = tb.Canvas(result_frame, width=780)
         canvas.pack(side="left", fill="both", expand=True)
 
         self.scrollbar = tb.Scrollbar(result_frame, orient="vertical", command=canvas.yview, bootstyle="round")
@@ -223,6 +223,7 @@ class HomePage(tb.Frame):
         self.load_parent_dropdown()
 
     def load_data(self):
+        self.clear_result_section()
         xml_file = filedialog.askopenfilename(filetypes=[("XML Files", "*.xml")])
         if not xml_file: return
         self.xml_processor = XMLProcessor(xml_file)
@@ -274,6 +275,10 @@ class HomePage(tb.Frame):
 
     def clear_result_section(self):
         self.applied_filters = []
+        self.results_count_label["text"] = ""
         self.clear_frame(self.result_content_frame)
         self.clear_frame(self.results_filters_frame)
+        self.clear_frame(self.pagination_frame)
+        self.button_reset_search.invoke()
+
         
