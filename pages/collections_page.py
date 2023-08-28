@@ -68,6 +68,8 @@ class CollectionsPage(tb.Frame):
         # Results display
         result_frame = tb.Frame(self)
         result_frame.pack(padx=16, pady=16,fill=tk.BOTH, expand=True)
+        self.results_count_label = tb.Label(result_frame, text="")   
+        self.results_count_label.pack(fill="both", anchor="center", pady=4)
 
         canvas = tk.Canvas(result_frame, width=780)
         canvas.pack(side="left", fill="both", expand=True)
@@ -142,6 +144,7 @@ class CollectionsPage(tb.Frame):
             data_label = tb.Label(self.result_content_frame, text="No Results Found")   
             data_label.pack(fill="both", anchor="center")
             self.scrollbar.pack_forget()
+        self.results_count_label["text"] = f"{len(elements)} results found"
         for element in elements:
             data_label_frame = tb.LabelFrame(self.result_content_frame, text=element['local_name'], padding=5, bootstyle="info")
             data_label_frame.pack(side="top", anchor='w', fill="x", pady=10)
