@@ -49,9 +49,3 @@ class SchemaProcessor:
     
     def get_nodes_by_level(self,level=1):
         return bt.findall(self.root, lambda node: node.depth == level)
-
-# root.show(max_depth=5,attr_list=["enumerations"])
-
-# x = bt.findall(root, lambda node: node.depth == 2)
-# for i in x:
-#     print(i.name, i.get_attr("enumerations"))
