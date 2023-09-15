@@ -1,0 +1,2465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+ xmlns:ruleml="http://ruleml.org/spec" xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ http://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/csprd01/xsd-schema/compact/lrml-compact.xsd">
+ <lrml:Comment> Tobacco and Primary Medical Services (Scotland) Act 2010 asp 3 (Scottish Act) Part 1
+  TOBACCO AND NICOTINE VAPOUR PRODUCTS ETC. </lrml:Comment>
+
+ <!-- Legal Source -->
+ <lrml:LegalSources>
+  <lrml:LegalSource key="src1" sameAs="../Corpus/2010ActAsAmended_EO_AF_AW_RS1.docx'"/>
+ </lrml:LegalSources>
+
+ <!-- Chapter 1 DISPLAY, SALE AND PURCHASE Display of tobacco products etc.  -->
+ <lrml:Statements>
+  <lrml:Comment> Chapter 1 DISPLAY, SALE AND PURCHASE Display of tobacco products etc.
+  </lrml:Comment>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts1">
+  <lrml:Comment>1 Prohibition of tobacco displays etc. </lrml:Comment>
+
+  <!-- Prescriptive Statement: 1 -->
+  <lrml:PrescriptiveStatement key="ps1">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> (1) A person who in the course of business displays or causes to be
+       displayed tobacco products or smoking related products in a place where tobacco products are
+       offered for sale commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 2 -->
+  <lrml:PrescriptiveStatement key="ps2">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (2) A person does not commit an offence under subsection (1) if the display
+       - (a) is in a specialist tobacconist, (b) does not include cigarettes or hand-rolling
+       tobacco, – and (c) Complies with any prescribed requirements. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps2" under="#ps1"/>
+  </lrml:OverrideStatement>
+
+  <!-- Prescriptive Statement: 3 -->
+  <lrml:PrescriptiveStatement key="ps3">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (3) A person does not commit an offence under subsection (1) if (a) the
+       tobacco products or smoking related products are displayed in the course of a business
+       involving the sale of tobacco products only to persons who carry on a tobacco business (or
+       their employees), – and (b) the display complies with any prescribed requirements.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps3" under="#ps1"/>
+  </lrml:OverrideStatement>
+
+  <!-- Prescriptive Statement: 4 -->
+  <lrml:PrescriptiveStatement key="ps4">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (4) The Scottish Ministers may provide in regulations that no offence is
+       committed under subsection (1) in relation to a display of tobacco products or smoking
+       related products which complies with requirements specified in the regulations.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 5. The reparation statement includes a reparation which is a relation between the penalty
+   and a prescriptive statement.The penalty is not made explicit here. -->
+  <lrml:ReparationStatement key="rs5">
+   <lrml:Reparation>
+    <lrml:Paraphrase> (5) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps1"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+  <!-- Constitutive Statement: 6 -->
+  <lrml:ConstitutiveStatement key="cs6">
+   <ruleml:Rule>
+    <lrml:Paraphrase> (6) For the purposes of subsection (1), a website is not a place.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 7 -->
+  <lrml:ConstitutiveStatement key="cs7">
+   <ruleml:Rule>
+    <lrml:Paraphrase> (7) In subsection (2), “specialist tobacconist” has the meaning given by
+     section 6(2) of the Tobacco Advertising and Promotion Act 2002 (c.36). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts2">
+  <lrml:Comment>2 Displays which are also advertisements </lrml:Comment>
+
+  <!-- Prescriptive Statement: 8 -->
+  <lrml:PrescriptiveStatement key="ps8">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> The Scottish Ministers may by regulations provide that a display of tobacco
+       products or smoking related products which also amounts to an advertisement is to be treated
+       for the purposes of offences under this Act and the Tobacco Advertising and Promotion Act
+       —. (a) as an advertisement and not as a display, or (b) as a display and not as an advertisement. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts3">
+  <lrml:Comment>3 Regulation of display of prices </lrml:Comment>
+  <!-- Prescriptive Statement: 9 -->
+  <lrml:PrescriptiveStatement key="ps9">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) The Scottish Ministers may by regulations impose requirements in relation
+       to the display in the course of business of prices of tobacco products or smoking related
+       products in a place where tobacco products are offered for sale. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- This statement block is optional -->
+  <!-- <lrml:Statements key="stmts3.1"> -->
+
+  <!-- Constitutive Statement: 10 -->
+  <lrml:ConstitutiveStatement key="cs10">
+   <ruleml:Rule>
+    <lrml:Paraphrase> (2) For the purposes of subsection (1), a website is not a place
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Prescriptive Statement: 11 -->
+  <lrml:PrescriptiveStatement key="ps11">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> but the regulations may otherwise provide for the meaning of “place” in that
+       subsection. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- An alternative if the previous "may" is not a power-->
+  <!--  <lrml:ConstitutiveStatement key="cs11"> 
+   <ruleml:Rule>
+    <lrml:Paraphrase> but the regulations may otherwise provide for the meaning of “place” in that
+     subsection. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>-->
+
+  <!-- Override ps11/cs11 under cs10 This override relation is there to translate
+     "but... otherwise" but is a matter of interpretation.-->
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps11" under="#cs10"/>
+  </lrml:OverrideStatement>
+
+  <!-- Prescriptive Statement: 12 -->
+  <lrml:PrescriptiveStatement key="ps12">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> (3) A person who displays or causes to be displayed prices of tobacco
+       products or smoking related products in breach of a requirement contained in the regulations
+       commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 13 -->
+  <lrml:ReparationStatement key="rs13">
+   <lrml:Reparation>
+    <lrml:Paraphrase> (4) A person guilty of an offence under subsection (3) is liable on summary
+     conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps12"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+
+  <!-- Prescriptive Statement: 14 -->
+  <lrml:PrescriptiveStatement key="ps14">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (5) The regulations may provide that a display of prices which also amounts
+       to an advertisement is to be treated for the purposes of offences under this Act and the
+       Tobacco Advertising and Promotion Act 2002 — (a) as an advertisement and not as a display of
+       prices , or (b) as a display of prices and not as an advertisement. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4">
+  <lrml:Comment>4 Sale of tobacco products to persons under 18 </lrml:Comment>
+
+  <!-- Prescriptive Statement : 15 -->
+  <lrml:PrescriptiveStatement key="ps15">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> (1) A person who sells a tobacco product or cigarette papers to a person
+       under the age of 18 commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 16 -->
+  <lrml:PrescriptiveStatement key="ps16">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (2) It is a defence to a charge in proceedings against a person (“the
+       accused”) under subsection (1) that – (a) the accused believed the person under the age of 18
+       (“the customer”) to be aged 18 or over, and (b) the accused had taken reasonable steps to
+       establish the customer's age. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps16" under="#ps15"/>
+  </lrml:OverrideStatement>
+
+  <!-- Constitutive Statement: 17 -->
+  <lrml:ConstitutiveStatement key="cs17">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) For the purposes of subsection (2)(b), the accused is to be treated as
+     having taken reasonable steps to establish the customer's age if and only if — (a) the accused
+     was shown any of the documents mentioned in subsection (4) , and (b) that document would have
+     convinced a reasonable person as to the customer's age. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 18 -->
+  <lrml:ConstitutiveStatement key="cs18">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) The documents referred to in subsection (3)(a) are any document bearing to
+     be— (a) a passport, (b) a European Union photocard driving licence, or (c) such other document,
+     or a document of such description, as may be prescribed. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Reparation Statement: 19 -->
+  <lrml:ReparationStatement key="rs19">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(5) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps15"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4.1">
+  <lrml:Comment>4A Sale of nicotine vapour products to persons under 18 </lrml:Comment>
+
+  <!-- Prescriptive Statement: 20 -->
+  <lrml:PrescriptiveStatement key="ps20">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person who sells a nicotine vapour product to a person under the age of
+       18 commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 21 -->
+  <lrml:PrescriptiveStatement key="ps21">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) It is a defence to a charge in proceedings against a person (“the
+       accused”) under subsection (1) that— (a) the accused believed the person under the age of 18
+       (“the customer”) to be aged 18 or over, and (b) the accused had taken reasonable steps to
+       establish the customer's age. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps21" under="#ps20"/>
+  </lrml:OverrideStatement>
+
+  <!-- Constitutive Statement: 22 -->
+  <lrml:ConstitutiveStatement key="cs22">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) For the purposes of subsection (2)(b), the accused is to be treated as
+     having taken reasonable steps to establish the customer's age if and only if — (a) the accused
+     was shown any of the documents mentioned in subsection (4), and (b) that document would have
+     convinced a reasonable person as to the customer's age. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 23 -->
+  <lrml:ConstitutiveStatement key="cs23">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) The documents referred to in subsection (3)(a) are any document bearing to
+     be— (a) a passport, (b) a European Union photocard driving licence, or (c) such other document,
+     or a document of such description, as may be prescribed. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Reparation Statement: 24 -->
+  <lrml:ReparationStatement key="rs24">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(5) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps20"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4.2">
+  <lrml:Comment>4B Age verification policy </lrml:Comment>
+
+  <!-- Prohibitive Statement: 25 -->
+  <lrml:PrescriptiveStatement key="ps25">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person commits an offence if the person— (a) carries on a tobacco or
+       nicotine vapour product business, and (b) fails to operate an age verification policy in
+       respect of premises at which the person carries on the tobacco or nicotine vapour product
+       business. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 26 It is encode a a permission because it is a negation of a rule, which is an obligation.
+    This formalization is complex to derive from the source texte.
+    We could introduce a plain exception element, to mention that further interpretation is required ; -->
+  <lrml:PrescriptiveStatement key="ps26">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) Subsection (1) does not apply to premises (“the business premises”) from
+       which— (a) tobacco products, cigarette papers or nicotine vapour products are, in pursuance
+       of a sale, despatched for delivery to different premises, (b) no other tobacco or nicotine
+       vapour product business is carried on from the business premises. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps26" under="#ps25"/>
+  </lrml:OverrideStatement>
+
+  <!-- Constitutive Statement: 27 -->
+  <lrml:ConstitutiveStatement key="cs27">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) An “age verification policy”is a policy that steps are to be taken to
+     establish the age of a person attempting to buy a tobacco product, cigarette papers or a
+     nicotine vapour product on the premises (the “customer”) if it appears to the person selling
+     the tobacco product, cigarette papers or nicotine vapour product that the customer may be under
+     the age of 25 (or such older age as may be specified in the policy). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Prescriptive Statement: 28 -->
+  <lrml:PrescriptiveStatement key="ps28">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(4) The Scottish Ministers may by regulations amend the age specified in
+       subsection (3). </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 29 -->
+  <lrml:PrescriptiveStatement key="cs29">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(5) The Scottish Ministers may publish guidance on matters relating to age
+       verification policies, including, in particular, guidance about— (a) steps that should be
+       taken to establish a customer's age, (b) documents that may be shown to the person selling a
+       tobacco product, cigarette papers or a nicotine vapour product as evidence of a customer's
+       age, (c) training that should be undertaken by the person selling the tobacco product,
+       cigarette papers or nicotine vapour product, (d) the form and content of notices that should
+       be displayed in the premises, (e) the form and content of records that should be maintained
+       in relation to an age verification policy. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 30 -->
+  <lrml:PrescriptiveStatement key="ps30">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(6) A person who carries on a tobacco or nicotine vapour product business
+       must have regard to guidance published under subsection (5) when operating an age
+       verification policy. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 31 -->
+  <lrml:ReparationStatement key="rs31">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(7) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 2 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps25"/>
+
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4.3">
+  <lrml:Comment>4C Sale of tobacco or nicotine vapour products by persons under 18 </lrml:Comment>
+
+  <!-- Prohibitive Statement: 32 -->
+  <lrml:PrescriptiveStatement key="ps32">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A responsible person who allows a tobacco product, cigarette papers or a
+       nicotine vapour product to be sold by a person under the age of 18 commits an
+       offence.</lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 33 -->
+  <lrml:ConstitutiveStatement key="cs33">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) For the purposes of subsection (1), “responsible person” means— (a) where
+     the sale is at premises which are noted in a registered person's entry in the Register, the
+     registered person for those premises, (b) where the sale is at premises which are not noted in
+     a registered person's entry in the Register— (i) any employer of the person who made the sale,
+     and (ii) any other person having management or control of those premises. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Prescriptive Statement: 34 -->
+  <lrml:PrescriptiveStatement key="ps34">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) Subsection (1) does not apply to a sale which— (a) is made at premises
+       which are noted in a registered person's entry in the Register, and (b) is authorised by the
+       registered person for those premises. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps34" under="#ps32"/>
+  </lrml:OverrideStatement>
+
+  <!-- Prescriptive Statement: 35 -->
+  <lrml:PrescriptiveStatement key="ps35">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(4) Each authorisation mentioned in subsection (3)(b) must be recorded and
+       kept at the premises at which a sale by a person under the age of 18 is made.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 36 -->
+  <lrml:PrescriptiveStatement key="ps36">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(5) The Scottish Ministers may prescribe— (a) the form and content of
+       authorisations made under subsection (3)(b), (b) the method of recording authorisations for
+       the purposes of subsection (4). </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 37 -->
+  <lrml:ConstitutiveStatement key="cs37">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(6) An authorisation is, for the purposes of subsection (3)(b), deemed not to
+     have been made, if— (a) it is not recorded and kept in accordance with subsection (4), or (b)
+     it is not made in accordance with any provision made under subsection (5). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Reparation Statement: 38 -->
+  <lrml:ReparationStatement key="rs38">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(7) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 1 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps32"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts4.4">
+  <lrml:Comment>4D Defence of due diligence for certain offences </lrml:Comment>
+
+  <!-- Constitutive Statement: 39 -->
+  <lrml:PrescriptiveStatement key="cs39">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) It is a defence for a person charged with an offence to which this
+       section applies to prove that the person (or any employee or agent of the person) took all
+       reasonable precautions and exercised all due diligence to prevent the offence being
+       committed. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 40 -->
+  <!--  This statement justifies the 3 following OverrideStatements, but I can't note that in lrml-->
+  <lrml:ConstitutiveStatement key="cs40">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) This section applies to an offence under any of the following provisions of
+     this Act— (a) section 4(1), (b) section 4A(1), (c) section 4C(1). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs39" under="#ps15"/>
+  </lrml:OverrideStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs39" under="#ps20"/>
+  </lrml:OverrideStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs39" under="#ps32"/>
+  </lrml:OverrideStatement>
+
+ </lrml:Statements>
+
+
+
+ <lrml:Statements key="stmts5">
+  <lrml:Comment>5 Purchase of tobacco products by persons under 18 </lrml:Comment>
+
+
+  <!-- Prohibitive Statement: 41 -->
+  <lrml:PrescriptiveStatement key="ps41">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person under the age of 18 who buys or attempts to buy a tobacco product or cigarette papers commits an offence.</lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 42 -->
+  <lrml:PrescriptiveStatement key="ps42">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) It is not an offence under subsection (1) for a person under the age of
+       18 to buy or attempt to buy a tobacco product or cigarette papers if the person is authorised
+       to do so by a council officer or a constable for the purpose of determining whether an
+       offence is being committed under section 4. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps42" under="#ps41"/>
+  </lrml:OverrideStatement>
+
+
+  <!-- Prescriptive Statement: 43 -->
+  <lrml:PrescriptiveStatement key="ps43">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (3) A council officer or a constable may authorise a person under the age of
+       18 to buy or attempt to buy a tobacco product or cigarette papers only if satisfied that all
+       reasonable steps have been or will be taken to avoid any risk to the welfare of the person.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 44 -->
+  <lrml:ReparationStatement key="rs44">
+   <lrml:Reparation>
+
+    <lrml:Paraphrase>(4) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 1 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps41"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts6">
+  <lrml:Comment>6 Purchase of tobacco products on behalf of persons under 18 </lrml:Comment>
+
+  <!-- Prohibitive Statement: 45 -->
+  <lrml:PrescriptiveStatement key="ps45">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person aged 18 or over who knowingly buys or attempts to buy a tobacco
+       product or cigarette papers on behalf of a person under the age of 18 commits an offence.
+      </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 46 -->
+  <lrml:ReparationStatement key="rs46">
+   <lrml:Reparation>
+
+    <lrml:Paraphrase>(2) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 5 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps45"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts6.1">
+  <lrml:Comment>6A Purchase of nicotine vapour products on behalf of persons under 18 </lrml:Comment>
+
+  <!-- Prohibitive Statement: 47 -->
+  <lrml:PrescriptiveStatement key="ps47">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person aged 18 or over who knowingly buys or attempts to buy a nicotine
+       vapour product on behalf of a person under the age of 18 commits an offence.
+      </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Reparation Statement: 48 -->
+  <lrml:ReparationStatement key="rs48">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(2) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 5 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps47"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts7">
+  <lrml:Comment>7 Confiscation of tobacco products from persons under 18 </lrml:Comment>
+
+  <!-- Prescriptive Statement: 49 -->
+  <lrml:PrescriptiveStatement key="ps49">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (1) Where a constable has reasonable grounds for suspecting that a person in
+       a public place— (a) is under the age of 18, and (b) is in possession of a tobacco product or
+       cigarette papers, the constable may require the person to surrender the tobacco product or,
+       as the case may be, the cigarette papers to the constable. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 50 -->
+  <lrml:PrescriptiveStatement key="ps50">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) A constable making a requirement under subsection (1) may also require
+       the person to supply the constable with the person's name and address. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 51 -->
+  <lrml:PrescriptiveStatement key="ps51">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(3) Where a constable makes a requirement under subsection (1) the constable
+       must inform the person concerned— (a) of the constable's suspicion, and (b) of the fact that
+       failure to comply with a requirement made under subsection (1) or (2) is an offence.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 52 -->
+  <lrml:PrescriptiveStatement key="ps52">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(4) A constable may arrest without warrant any person who fails to comply
+       with a requirement made under subsection (1). </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 53 -->
+  <lrml:PrescriptiveStatement key="ps53">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(5) A person who fails to comply with a requirement made under subsection (1)
+       or (2) commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 54 -->
+  <lrml:ReparationStatement key="rs54">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(6) A person guilty of an offence under subsection (5) is liable on summary
+     conviction to a fine not exceeding level 2 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps53"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+  <!-- Prescriptive Statement: 55 -->
+  <lrml:PrescriptiveStatement key="ps55">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(7) The constable may dispose of any tobacco product or cigarette papers
+       surrendered to the constable in such manner as the constable considers appropriate.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 56 -->
+  <lrml:ConstitutiveStatement key="cs56">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(8) In this section “public place”includes— (a) any place to which the public
+     have access for the time being (whether on payment of a fee or otherwise), and (b) any place to
+     which the public do not have access but to which the person mentioned in subsection (1) has
+     unlawfully gained access. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts8">
+  <lrml:Comment>8 Display of warning statements </lrml:Comment>
+
+  <!-- Prescriptive Statement: 57 -->
+  <lrml:PrescriptiveStatement key="ps57">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) A person who carries on a tobacco business must display a notice in
+       accordance with subsection (2) in any premises where that business is carried on.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 58 -->
+  <lrml:PrescriptiveStatement key="ps58">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) The notice must— (a) contain the following statement— “It is illegal to
+       sell tobacco products to anyone under the age of 18”, and (b) be displayed in a prominent
+       position in the premises where the statement is readily visible to persons at the point of
+       sale of the tobacco products. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 59 -->
+  <lrml:PrescriptiveStatement key="ps59">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(3) A person who fails, without reasonable excuse, to comply with subsection
+       (1) commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 60 -->
+  <lrml:ReparationStatement key="rs60">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(4) A person guilty of an offence under subsection (3) is liable on summary
+     conviction to a fine not exceeding level 3 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps59"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+  <!-- Prescriptive Statement: 61 -->
+  <lrml:PrescriptiveStatement key="ps61">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(5) The Scottish Ministers may prescribe the dimensions of the notice to be
+       displayed in accordance with this section and the size of the statement to be displayed on
+       it. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts9">
+  <lrml:Comment>9 Prohibition of vending machines for the sale of tobacco products </lrml:Comment>
+
+
+  <!-- Prohibitive Statement: 62 -->
+  <lrml:PrescriptiveStatement key="ps62">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person who has the management or control of premises on which a vending
+       machine is available for use commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 63 -->
+  <lrml:ReparationStatement key="rs63">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(2) A person guilty of an offence under subsection (1) is liable on summary
+     conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps62"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+  <!-- Constitutive Statement: 64 -->
+  <lrml:ConstitutiveStatement key="cs64">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) In this section “vending machine” means an automatic machine for the sale
+     of tobacco products (regardless of whether the machine also sells other products).
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <!-- Chapter 2 REGISTER OF TOBACCO AND NICOTINE VAPOR PRODUCT RETAILLERS -->
+ <lrml:Statements>
+  <lrml:Comment> Chapter 2 REGISTER OF TOBACCO AND NICOTINE VAPOR PRODUCT RETAILLERS </lrml:Comment>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts10">
+  <lrml:Comment>10 Register of tobacco and nicotine vapour product retailers </lrml:Comment>
+
+  <!-- Prescriptive Statement: 65 -->
+  <lrml:PrescriptiveStatement key="ps65">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) The Scottish Ministers must keep a register of persons carrying on a
+       tobacco [or nicotine vapour product ] </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 66 -->
+  <lrml:ConstitutiveStatement key="cs66">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) In this Part, “registered” means entered in the Register, and
+     “unregistered”is to be construed accordingly. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts11">
+  <lrml:Comment>11 Application for registration and addition of premises etc. </lrml:Comment>
+
+  <!-- Prescriptive Statement: 67 / It is a Right, according to ps70-->
+  <lrml:PrescriptiveStatement key="ps67">
+   <lrml:Comment>link to #ps70 which is the counterpart obligation of this right</lrml:Comment>
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Right>
+      <lrml:Paraphrase>(1) A person may apply to the Scottish Ministers— (a) to be registered, or
+       (b) to add further premises to the person's entry in the Register. </lrml:Paraphrase>
+     </lrml:Right>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 68 -->
+  <lrml:PrescriptiveStatement key="ps68">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) The application must— (a) state the name and address of the applicant,
+       (b) where it is an application under subsection (1)(a), state the addresses of all premises
+       at which the applicant proposes to carry on a tobacco or nicotine vapour product business,
+       (c) where it is an application under subsection (1)(b), state the address of the further
+       premises at which the applicant proposes to carry on a tobacco or nicotine vapour product
+       business, (d) contain such other information as is prescribed, and (e) be made in such form
+       and manner as is determined by the Scottish Ministers. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 69 -->
+  <lrml:PrescriptiveStatement key="ps69">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2A) an application under subsection (1) must state, in relation to each of
+       the premises included in it, whether the applicant proposes to carry on— (a) a tobacco
+       business at the premises, (b) a nicotine vapour product business at the premises, or (c) both
+       a tobacco business and a nicotine vapour product business at the premises. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 70 -->
+  <lrml:PrescriptiveStatement key="ps70">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(3) The Scottish Ministers must grant the application unless— (a) it does not
+       comply with the requirements in subsection (2), or (b) at the time the application is made,
+       the applicant is banned, under a tobacco and nicotine vapour product banning order from
+       carrying on a tobacco or nicotine vapour product business at any premises specified in the
+       application. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 71 -->
+  <lrml:PrescriptiveStatement key="ps71">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(4) On granting an application under subsection (1)(a), the Scottish
+       Ministers must enter the following information in the Register— (a) the name and address of
+       the applicant, (b) the addresses of the premises at which the applicant proposes to carry on
+       a tobacco [or nicotine vapour product business, noting, in relation to each of the premises,
+       whether the applicant proposes to carry on—] 4 [(i) a tobacco business at the premises, (ii)
+       a nicotine vapour product business at the premises, or (iii) both a tobacco business and a
+       nicotine vapour product business at the premises, and (c) any other information which the
+       Scottish Ministers consider appropriate. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 72 -->
+  <lrml:PrescriptiveStatement key="ps72">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(5) On granting an application under subsection (1)(b), the Scottish
+       Ministers must amend the applicant's entry in the Register so as to include the address of
+       the further premises at which the applicant proposes to carry on a tobacco [or nicotine
+       vapour product business, noting, in relation to each of the premises, whether the applicant
+       proposes to carry on—] 5 (a) a tobacco business at the premises, (b) a nicotine vapour
+       product business at the premises, or (c) both a tobacco business and a nicotine vapour
+       product business at the premises. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+
+
+ <lrml:Statements key="stmts12">
+  <lrml:Comment>12 Certificates of registration </lrml:Comment>
+
+  <!-- Prescriptive Statement: 73 -->
+  <lrml:PrescriptiveStatement key="ps73">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) On granting an application under section 11(3) the Scottish Ministers
+       must issue to the applicant a certificate of registration in respect of each premises stated
+       in the application. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 74 -->
+  <lrml:PrescriptiveStatement key="ps74">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) A certificate issued under subsection (1) must state whether the premises
+       are noted in the applicant's entry in the Register as premises at which the person carries
+       on— (a) a tobacco business, (b) a nicotine vapour product business, or (c) both a tobacco
+       business and a nicotine vapour product business. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts13">
+  <lrml:Comment>13 Duty to notify certain changes </lrml:Comment>
+
+  <!-- Prescriptive Statement: 75 -->
+  <lrml:PrescriptiveStatement key="ps75">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) A registered person must give the Scottish Ministers notice of— (a) a
+       change in the person's name or address, (b) the fact that the person is no longer carrying on
+       a tobacco business at an address noted in the person's entry in the Register, (c) the fact
+       that the person is no longer carrying on a nicotine vapour product business at an address
+       noted in the person's entry in the Register. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 76 -->
+  <lrml:PrescriptiveStatement key="ps76">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) A notice under subsection (1) must be given within 3 months of the date
+       of the change to which it relates. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+
+
+ <lrml:Statements key="stmts14">
+  <lrml:Comment>14 Changes to and removal from Register </lrml:Comment>
+
+  <!-- Prescriptive Statement: 77 -->
+  <lrml:PrescriptiveStatement key="ps77">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) The Scottish Ministers may correct the Register (following notification
+       under section 13 or otherwise) as they consider appropriate. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 78 -->
+  <lrml:PrescriptiveStatement key="ps78">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) Where a tobacco and nicotine vapour product banning order is made against
+       a registered person, the Scottish Ministers must amend the person's entry in the Register so
+       as to remove references to the premises specified in the order. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 79 -->
+  <lrml:PrescriptiveStatement key="ps79">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) The Scottish Ministers may remove a person's entry from the Register if—
+       (a) as a result of a correction or amendment under subsection (1) or (2), there are no
+       premises noted in the person's entry in the Register, or (b) they are not satisfied that the
+       person is carrying on a tobacco or nicotine vapour product business. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 80 -->
+  <lrml:PrescriptiveStatement key="ps80">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(4) Where the Scottish Ministers correct, amend or remove a person's entry in
+       the Register under this section, they must— (a) as soon as reasonably practicable notify the
+       person of the correction, amendment or, as the case may be, removal, and (b) if it is
+       appropriate to do so, issue at the same time to the person a revised certificate of
+       registration. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 81 -->
+  <lrml:PrescriptiveStatement key="ps81">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(5) The Scottish Ministers must reinstate a person's entry in the register
+       if— (a) the entry was removed under subsection (3)(b), and (b) the person notifies them no
+       later than 28 days after notice of the removal is given under subsection (4)(a) that the
+       person is still carrying on a tobacco or nicotine vapour product business. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 82 -->
+  <lrml:PrescriptiveStatement key="ps82">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(6) A notice under subsection (4)(a) may be given— (a) by delivering it to
+       the person, (b) by leaving it at the person's usual or last known address, (c) by sending it
+       by post to the person at that address. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts15">
+  <lrml:Comment>15 Tobacco retailing banning orders </lrml:Comment>
+
+  <!-- Prescriptive Statement: 83 -->
+  <lrml:PrescriptiveStatement key="ps83">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) A council may apply to the sheriff for an order banning a person from
+       carrying on a tobacco or nicotine vapour product business from premises within the council's
+       area. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 84 -->
+  <lrml:PrescriptiveStatement key="ps84">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) An application under subsection (1) must specify the premises from which
+       the person is to be banned from carrying on a tobacco or nicotine vapour product business.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 85 -->
+  <lrml:PrescriptiveStatement key="ps85">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) The sheriff may make an order banning the person from carrying on a
+       tobacco or nicotine vapour product business at the premises specified in the order if
+       satisfied, on the balance of probabilities, that— (a) there have been 3 or more relevant
+       enforcement actions in respect of each premises specified in the order, (b) at least one of
+       the actions occurred in the period of 2 months ending on the date the application was made,
+       (c) the conduct to which the actions relate took place within a period of 2 years, and (d)
+       the making of the order is necessary to prevent the commission of offences under Chapter 1 or
+       2. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Constitutive Statement: 86 -->
+  <lrml:ConstitutiveStatement key="cs86">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) A relevant enforcement action occurs where a person mentioned in subsection
+     (4A) is— (a) issued with a fixed penalty notice (which is not subsequently withdrawn), (b)
+     convicted of an offence under Chapter 1 or 2 , or (c) convicted of an offence under section
+     92(1)(b) or (c) of the Trade Marks Act 1994 (unauthorised use of trade mark in relation to
+     goods) in circumstances where the goods in question are, or include, tobacco products, smoking
+     related products or nicotine vapour products. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 87 -->
+  <lrml:ConstitutiveStatement key="cs87">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4A) The persons are— (a) the person who is the subject of the application, (b)
+     an employee or agent of that person. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 88 -->
+  <!--  Also contains a prohibition (no longer than 24 months) -->
+  <lrml:ConstitutiveStatement key="cs88">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(5) An order made under this section has effect for the period (not exceeding
+     24 months) specified in the order beginning with the day the order is granted.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 89 -->
+  <lrml:ConstitutiveStatement key="cs89">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(6) In this Part, an order made under this section is referred to as a “tobacco
+     and nicotine vapour product banning order” . </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts16">
+  <lrml:Comment>16 Tobacco retailing banning orders: ancillary orders </lrml:Comment>
+
+  <!-- Constitutive Statement: 90 -->
+  <lrml:ConstitutiveStatement key="cs90">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(1) This section applies where— (a) a council has applied for a tobacco and
+     nicotine vapour product banning order in respect of a person (“P”), or (b) a tobacco and
+     nicotine vapour product banning order has been made in respect of P. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Prescriptive Statement: 91 -->
+  <lrml:PrescriptiveStatement key="ps91">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) A council may apply to the sheriff for an ancillary order— (a) banning P
+       from— (i) being connected to a person carrying on a tobacco or nicotine vapour product
+       business at the specified premises, (ii) seeking to control a person carrying on a tobacco or
+       nicotine vapour product business at the specified premises, (b) where P is not an individual,
+       banning any person connected to P from— (i) carrying on a tobacco or nicotine vapour product
+       business at the specified premises, (ii) being connected to a person carrying on a tobacco or
+       nicotine vapour product business at the specified premises, (iii) seeking to control a person
+       carrying on a tobacco or nicotine vapour product business at the specified premises.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 92 -->
+  <lrml:PrescriptiveStatement key="ps92">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> A sheriff may make the ancillary order if— (a) the sheriff is satisfied, on
+       the balance of probabilities, that the order is necessary to prevent the commission of
+       further offences under Chapter 1 or 2, and (b) where this section applies by virtue of
+       subsection (1)(a), the sheriff makes the tobacco and nicotine vapour product banning order.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 93 -->
+  <lrml:ConstitutiveStatement key="cs93">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) An ancillary order made under this section ceases to have effect when the
+     tobacco and nicotine vapour product banning order to which it relates ceases to have effect.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 94 -->
+  <lrml:ConstitutiveStatement key="cs94">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(5) In subsection (2), “the specified premises” means the premises specified in
+     the tobacco and nicotine vapour product banning order to which the ancillary order relates .
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 95 -->
+  <lrml:ConstitutiveStatement key="cs95">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(6) For the purposes of this section, a person is connected to a partnership, a
+     limited liability partnership, a company or other body (whether incorporated or unincorporated)
+     if the person— (a) in the case of a partnership, is a partner, (b) in the case of a limited
+     liability partnership, is a member, (c) in the case of a company— (i) is a director, or (ii)
+     has control of the company, (d) in any other case, is concerned in the management or control of
+     the body. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 96 -->
+  <lrml:ConstitutiveStatement key="cs96">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(7) For the purposes of subsection (6)(c)(ii), a person is taken to have
+     control of a company if— (a) any of the directors of the company, or of any other company
+     having control of the company, is accustomed to act in accordance with the person's directions
+     or instructions, or (b) the person is entitled to exercise, or to the control the exercise of,
+     at least one third of the voting power at any general meeting of the company or of any other
+     company having control of the company. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts17">
+  <lrml:Comment>17 Tobacco retailing banning orders etc.: appeals </lrml:Comment>
+
+  <!-- Prescriptive Statement: 97 -->
+  <lrml:PrescriptiveStatement key="ps97">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase> (1) A person against whom a tobacco [and nicotine vapour product] 1 banning
+       order or an ancillary order under section 16 is made may appeal to the sheriff principal,
+       whose decision is final. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 98 -->
+  <lrml:PrescriptiveStatement key="ps98">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) An appeal under this section must be made within 21 days of the order
+       being made. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 99 -->
+  <lrml:PrescriptiveStatement key="ps99">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(3) Where the appeal is against a tobacco and nicotine vapour product banning
+       order, the sheriff principal may determine the appeal by— (a) quashing the order (and any
+       ancillary order under section 16 relating to the order), (b) substituting for the period
+       specified in the order under section 15(5) such other period of effect (ending no later than
+       24 months after the day the order was granted) as the sheriff principal considers
+       appropriate, or (c) refusing the appeal. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 99a -->
+  <lrml:PrescriptiveStatement key="ps99a">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(4) Where the appeal is against an ancillary order under section 16, the
+       sheriff principal may determine the appeal by— (a) quashing the order, or (b) refusing the
+       appeal. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts18">
+  <lrml:Comment>18 Tobacco retailing banning orders etc.: notification to Scottish Ministers </lrml:Comment>
+
+  <!-- Constitutive Statement: 100 -->
+  <lrml:PrescriptiveStatement key="cs100">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) On making a tobacco and nicotine vapour product banning order or an
+       ancillary order under section 16, the sheriff must notify the Scottish Ministers.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 101 -->
+  <lrml:PrescriptiveStatement key="cs101">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) On determining an appeal under section 17 , the Clerk of the Sheriff
+       Appeal Court must notify the Scottish Ministers. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts19">
+  <lrml:Comment>19 Tobacco retailing banning orders: display of notices </lrml:Comment>
+
+  <!-- Constitutive Statement: 102 -->
+  <lrml:ConstitutiveStatement key="cs102">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(1) This section applies where— (a) a tobacco and nicotine vapour product
+     banning order has effect in respect of a person, and (b) the person carries on a retail
+     business at the premises specified in the order. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Prescriptive Statement: 103 -->
+  <lrml:PrescriptiveStatement key="ps103">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) The person must display a notice in the premises in accordance with
+       subsection (3). </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 104 -->
+  <lrml:PrescriptiveStatement key="ps104">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(3) The notice must— (a) state that the premises have been specified in a
+       tobacco and nicotine vapour product banning order and the period for which the order has
+       effect, (b) be displayed in a prominent position in the premises where it is readily visible
+       to persons at every relevant point of sale, and (c) be displayed no later than 14 days after
+       the tobacco and nicotine vapour product banning order is made. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Constitutive Statement: 105 -->
+  <lrml:ConstitutiveStatement key="cs105">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) A relevant point of sale is one that was used for the sale of tobacco
+     products, smoking related products or nicotine vapour products at any time during the period of
+     2 months ending with the making of the banning order. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Prescriptive Statement: 106 -->
+  <lrml:PrescriptiveStatement key="ps106">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(5) The Scottish Ministers may prescribe— (a) the dimensions of the notice to
+       be displayed in accordance with this section, (b) the wording of the statement to be
+       displayed on the notice, and (c) the size of the statement. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts20">
+  <lrml:Comment>20 Offences relating to the Register </lrml:Comment>
+
+  <!-- Prohibitive Statement: 107 -->
+  <lrml:PrescriptiveStatement key="ps107">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) An unregistered person who carries on a tobacco business commits an
+       offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 108 -->
+  <lrml:PrescriptiveStatement key="ps108">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(2) A registered person who carries on a tobacco business at premises other
+       than those noted in the person's entry in the Register commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 109 -->
+  <!--  offense in a different provision as its content-->
+  <lrml:PrescriptiveStatement key="ps109">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(3) A person who fails, without reasonable excuse, to comply with section
+       13(1) (duty to notify certain changes) commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 110 -->
+  <!--  offense in a different provision as its content-->
+  <lrml:PrescriptiveStatement key="ps110">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(4) A person who breaches a tobacco retailing banning order or an ancillary
+       order made under section 16 commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 111 -->
+  <!--  offense in a different provision as its content-->
+  <lrml:PrescriptiveStatement key="ps111">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(5) A person who fails, without reasonable excuse, to comply with section
+       19(2) (duty to display notice) commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Reparation Statement: 112 -->
+  <lrml:ReparationStatement key="rs112">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(6) A person guilty of an offence under— <br/> (a) subsection (1), (2) or (4)
+     is liable on summary conviction to— (i) a fine not exceeding £20,000, (ii) imprisonment for a
+     term not exceeding 6 months, or (iii) both, <br/> (b) subsection (3) is liable on summary
+     conviction to a fine not exceeding level 2 on the standard scale, (c) subsection (5) is liable
+     on summary conviction to a fine not exceeding level 3 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps107"/>
+    <lrml:toPrescriptiveStatement keyref="#ps108"/>
+    <lrml:toPrescriptiveStatement keyref="#ps109"/>
+    <lrml:toPrescriptiveStatement keyref="#ps110"/>
+    <lrml:toPrescriptiveStatement keyref="#ps111"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts21">
+  <lrml:Comment>21 Public inspection of Register </lrml:Comment>
+
+  <!-- Constitutive Statement: 113 -->
+  <lrml:PrescriptiveStatement key="ps113">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) On the basis of information contained in the Register, the Scottish
+       Ministers must make available for public inspection a list of premises, specifying for each
+       of those premises whether there is carried on, or there is proposed to be carried on— (a) a
+       tobacco business, (b) a nicotine vapour product business, or (c) both a tobacco business and
+       a nicotine vapour product business. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 114 -->
+  <lrml:PrescriptiveStatement key="ps114">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) The list must be made available free of charge at all reasonable times.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts22">
+  <lrml:Comment>22 Council access to Register </lrml:Comment>
+
+  <!-- Prescriptive Statement: 115 -->
+  <lrml:PrescriptiveStatement key="ps115">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) The Scottish Ministers must make available to councils the information
+       contained in the Register. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 113 -->
+  <lrml:PrescriptiveStatement key="ps113a">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(2) Information disclosed under subsection (1) may by used by councils only
+       for the purpose of enabling or assisting them to perform their functions under this Part.
+      </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts23">
+  <lrml:Comment>23 Delegation of functions relating to Register </lrml:Comment>
+
+  <!-- Prescriptive Statement: 114 -->
+  <lrml:PrescriptiveStatement key="ps114a">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) The Scottish Ministers may, to such extent and subject to such conditions
+       as they think appropriate, delegate any of their functions under this Chapter (other than
+       excepted functions) to such person as they may determine. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 115 -->
+  <lrml:ConstitutiveStatement key="cs115a">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) An excepted function is a function relating to— (a) the making of
+     regulations, or (b) the determination under section 11(2)(e) of the form and manner of an
+     application. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 116 -->
+  <lrml:PrescriptiveStatement key="cs116">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) A delegation under subsection (1) may be varied or revoked at any time.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts24">
+  <lrml:Comment>24 Vehicles, vessels and moveable structures </lrml:Comment>
+
+  <!-- Prescriptive Statement: 117 -->
+  <lrml:PrescriptiveStatement key="ps117">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) The Scottish Ministers may by regulations provide for this Chapter to
+       apply in relation to vessels, vehicles and other moveable structures subject to such
+       modifications as they consider necessary or expedient. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+ <!--  Chapter 3 ENFORCMENT AND FIXED PENALTIES -->
+ <lrml:Statements>
+  <lrml:Comment> Chapter 3 ENFORCMENT AND FIXED PENALTIES </lrml:Comment>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts25">
+  <lrml:Comment>25 Enforcement </lrml:Comment>
+
+  <!-- Prescriptive Statement: 118 -->
+  <lrml:PrescriptiveStatement key="ps118">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) It is the duty of a council to enforce within its area the provisions of
+       Chapters 1 and 2 and regulations made under them. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 119 -->
+  <lrml:PrescriptiveStatement key="ps119">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) The Scottish Ministers may direct, in relation to a particular case or
+       cases of a particular description, that any duty imposed on a council by subsection (1) is to
+       be discharged by the Scottish Ministers and not by the council. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 120 -->
+  <lrml:ConstitutiveStatement key="cs120">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) Where a direction has effect under subsection (2), sections 27 to 31 apply,
+     in relation to the particular case, or cases of the description, specified in the direction—
+     (a) as if references to a council officer were references to a person acting on behalf of the
+     Scottish Ministers, and (b) with references to a person's area being read in accordance with
+     any modifications specified in the direction. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts26">
+  <lrml:Comment>26 Programmes of enforcement </lrml:Comment>
+
+  <!-- Prescriptive Statement: 121 -->
+  <lrml:PrescriptiveStatement key="ps121">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(1) A council must, at least once in every period of 12 months, carry out a
+       programme of enforcement action in its area. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 122 -->
+  <lrml:ConstitutiveStatement key="cs122">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) For the purposes of subsection (1), a programme of enforcement action is a
+     programme involving one or both of the following— (a) the investigation of complaints in
+     respect of alleged offences under Chapter 1 or 2, (b) the taking of other measures intended to
+     reduce the incidence of offences under those Chapters. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts27">
+  <lrml:Comment>27 Fixed penalties </lrml:Comment>
+
+  <!-- Prescriptive Statement: 123 -->
+  <lrml:PrescriptiveStatement key="ps123">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) An enforcement officer may give a person a fixed penalty notice if the
+       officer has reason to believe that the person has committed an offence under Chapter 1 or 2.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prohibitive Statement: 124 -->
+  <lrml:PrescriptiveStatement key="ps124">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(2) But a person may be given a fixed penalty notice only if the person is
+       aged 16 or over. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps124" under="#ps123"/>
+  </lrml:OverrideStatement>
+
+  <!-- Constitutive Statement: 125 -->
+  <lrml:ConstitutiveStatement key="cs125">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) An enforcement officer is— (a) a council officer for the area in which the
+     offence is believed to have been committed, or (b) a constable. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 126 -->
+  <lrml:ConstitutiveStatement key="cs126">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) Schedule 1 makes further provision about fixed penalties.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts28">
+  <lrml:Comment>28 Powers of entry etc. </lrml:Comment>
+
+  <!-- Prescriptive Statement: 127 -->
+  <lrml:PrescriptiveStatement key="ps127">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) 42 For the purpose of carrying out a council's functions under this Part,
+       a council officer is entitled to— (a) enter any premises (other than premises used only as a
+       private dwelling house), (b) inspect and examine the premises, (c) require the production of
+       any book, document, data, record (in whatever form it is held) or product and inspect it, and
+       take copies of or extracts from it, (d) take possession of any book, document, data, record
+       (in whatever form it is held) or product which is on the premises and retain it for as long
+       as the officer considers necessary, (e) require any person to give the officer such
+       information, or afford the officer such facilities and assistance, as the officer considers
+       necessary. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 128 -->
+  <lrml:PrescriptiveStatement key="ps128">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(2) A person is not required by subsection (1) to answer any question or
+       produce any document which the person would be entitled to refuse to answer or produce in
+       proceedings in a court in Scotland. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override under="#ps127" over="#ps128"/>
+  </lrml:OverrideStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts29">
+  <lrml:Comment>29 Warrants for entry </lrml:Comment>
+
+
+  <!-- Prescriptive Statement: 129 -->
+  <lrml:PrescriptiveStatement key="ps129">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) A sheriff may by warrant authorise a council officer to enter (if
+       necessary using reasonable force) any premises (other than premises used only as a private
+       dwelling house) for the purpose of carrying out a council's functions under this Part.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 130 -->
+  <lrml:PrescriptiveStatement key="ps130">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(2) A warrant may be granted under subsection (1) only if the sheriff is
+       satisfied by evidence on oath— (a) that there are reasonable grounds for entering the
+       premises in question, and (b) that— (i) entry to the premises has been or is likely to be
+       refused and that notice of intention to apply for a warrant under this section has been given
+       to the occupier, (ii) a request for entry, or the giving of such notice, would defeat the
+       object of the entry, (iii) the premises are unoccupied, or (iv) the occupier is temporarily
+       absent and it might defeat the object of the entry to await the occupier's return.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 131 -->
+  <lrml:ConstitutiveStatement key="cs131">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(3) A warrant granted under this section continues in force until the end of
+     the period of one month beginning with the date on which it is granted. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+
+
+ <lrml:Statements key="stmts30">
+  <lrml:Comment>30 Powers of entry and warrants for entry: supplementary </lrml:Comment>
+
+  <!-- Prescriptive Statement: 132 -->
+  <lrml:PrescriptiveStatement key="ps132">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) A council officer entering any premises under section 28 or in accordance
+       with a warrant granted under section 29 may take on to the premises such other persons and
+       such equipment as the officer considers necessary. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 133 -->
+  <lrml:PrescriptiveStatement key="ps133">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(2) A right to enter any premises conferred by section 28 may be exercised
+       only at a reasonable time. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps133" under="#ps127"/>
+  </lrml:OverrideStatement>
+
+  <!-- Prescriptive Statement: 134 -->
+  <lrml:PrescriptiveStatement key="ps134">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(3) A council officer exercising a right conferred by section 28 must, if
+       required to do so, produce written evidence of the officer's authorisation to exercise that
+       right. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 135 -->
+  <lrml:PrescriptiveStatement key="ps135">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(4) On leaving any premises which a council officer is authorised to enter by
+       a warrant granted under section 29, the officer must, if the premises are unoccupied or the
+       occupier is temporarily absent, leave the premises as effectively secured against trespassers
+       as the officer found them. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prescriptive Statement: 136 -->
+  <lrml:PrescriptiveStatement key="ps136">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Obligation>
+      <lrml:Paraphrase>(5) A council officer who takes possession of any item under section 28(1)(d)
+       must leave a statement on the premises from which the item was removed— (a) giving
+       particulars of what has been taken, and (b) stating that the officer has taken possession of
+       it. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+
+
+ <lrml:Statements key="stmts31">
+  <lrml:Comment>31 Obstruction, etc. of council officers </lrml:Comment>
+
+  <!-- Prohibitive Statement: 137 -->
+  <lrml:PrescriptiveStatement key="ps137">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) A person who— (a) intentionally obstructs a council officer who is acting
+       in the proper exercise of the officer's functions under this Part, or (b) without reasonable
+       cause fails to comply with any requirement made by such an officer who is so acting, commits
+       an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 138 -->
+  <lrml:PrescriptiveStatement key="ps138">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(2) A person who, in giving any information which is properly required by a
+       council officer, makes a statement which is false in a material particular commits an
+       offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Prescriptive Statement: 139 -->
+  <lrml:PrescriptiveStatement key="ps139">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) A person does not commit an offence under subsection (2) if— (a) the
+       person did not know the material particular was false, and (b) the person had reasonable
+       grounds to believe that it was true. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps139" under="#ps138"/>
+  </lrml:OverrideStatement>
+
+  <!-- Reparation Statement: 140 -->
+  <lrml:ReparationStatement key="rs140">
+   <lrml:Reparation>
+    <lrml:Paraphrase>(4) A person guilty of an offence under subsection (1) or (2) is liable on
+     summary conviction to a fine not exceeding level 3 on the standard scale. </lrml:Paraphrase>
+    <lrml:toPrescriptiveStatement keyref="#ps137"/>
+    <lrml:toPrescriptiveStatement keyref="#ps138"/>
+   </lrml:Reparation>
+  </lrml:ReparationStatement>
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts32">
+  <lrml:Comment>32 Powers of entry: constables </lrml:Comment>
+
+  <!-- Prescriptive Statement: 141 -->
+  <lrml:PrescriptiveStatement key="ps141">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(1) A constable who suspects with reasonable cause that any person is
+       committing or has committed an offence under Chapter 1 or 2 may enter any premises (other
+       than premises used only as a private dwelling house) for the purpose of obtaining evidence of
+       the offence. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Prohibitive Statement: 142 -->
+  <lrml:PrescriptiveStatement key="ps142">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(2) A right to enter any premises conferred by subsection (1) may be
+       exercised only at a reasonable time. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override under="#ps141" over="#ps142"/>
+  </lrml:OverrideStatement>
+
+  <!-- Prescriptive Statement: 143 -->
+  <lrml:PrescriptiveStatement key="ps143">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) A sheriff may by warrant authorise a constable authorised to exercise the
+       power conferred by subsection (1) to do so (if necessary using reasonable force) in
+       accordance with the warrant.</lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Constitutive Statement: 144 -->
+  <lrml:PrescriptiveStatement key="ps144">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(4) A warrant may be granted under subsection (3) only if the sheriff is
+       satisfied, by evidence on oath, that there are reasonable grounds for suspecting that an
+       offence under Chapter 1 or 2 is or has been committed on the premises. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps144" under="#ps143"/>
+  </lrml:OverrideStatement>
+ </lrml:Statements>
+
+ <!-- Chapter 4 MISCELLANEOUS AND SUPPLEMENTARY -->
+ <lrml:Statements>
+  <lrml:Comment> Chapter 4 MISCELLANEOUS AND SUPPLEMENTARY </lrml:Comment>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts33">
+  <lrml:Comment>33 Presumption as to contents of container </lrml:Comment>
+
+  <!-- Constitutive Statement: 145 -->
+  <lrml:ConstitutiveStatement key="cs145">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(1) This section applies for the purpose of any trial in proceedings for an
+     alleged offence under section 1, 4, 4A, 4B, 4C, 5, 6, 6A or 9 </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 146 -->
+  <lrml:ConstitutiveStatement key="cs146">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) Any substance displayed, sold or purchased in a container (whether sealed
+     or not) is presumed to conform to the description of the substance on the container.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Prescriptive Statement: 147 -->
+  <lrml:PrescriptiveStatement key="ps147">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) At the trial, any party to the proceedings may rebut the presumption
+       mentioned in subsection (2) by proving that, at the time of its display, sale or purchase,
+       the substance in the container did not match the description on the container.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <!-- Unsure it is an exception. Depends on how "presume / rebut the presumption" is seen -->
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps147" under="#cs146"/>
+  </lrml:OverrideStatement>
+
+
+  <!-- Prescriptive Statement: 148 -->
+  <lrml:PrescriptiveStatement key="ps148">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(4) However, a party may lead evidence for the purpose of rebutting the
+       presumption only if the party has, not less than 7 days before the date of the trial, given
+       notice of the intention to do so to the other parties. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps148" under="#ps147"/>
+  </lrml:OverrideStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts34">
+  <lrml:Comment>34 Offences by bodies corporate etc. </lrml:Comment>
+
+
+  <!-- Prohibitive Statement: 149 -->
+  <lrml:PrescriptiveStatement key="ps149">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Prohibition>
+      <lrml:Paraphrase>(1) Where— <br/>(a) an offence under this Act has been committed by— (i) a
+       body corporate, (ii) a Scottish partnership, or (iii) an unincorporated association other
+       than a Scottish partnership, and <br/>(b) it is proved that the offence was committed with
+       the consent or connivance of, or was attributable to any neglect on the part of— (i) a
+       relevant individual, or (ii) an individual purporting to act in the capacity of a relevant
+       individual, <br/>that individual (as well as the body corporate, partnership or, as the case
+       may be, unincorporated association) commits the offence and is liable to be proceeded against
+       and punished accordingly. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Constitutive Statement: 150 -->
+  <lrml:ConstitutiveStatement key="cs150">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) In subsection (1), “relevant individual” means— <br/>(a) in relation to a
+     body corporate (other than a limited liability partnership)— (i) a director, manager, secretary
+     or other similar officer of the body, (ii) where the affairs of the body are managed by its
+     members, a member, <br/>(b) in relation to a limited liability partnership, a member, <br/>(c)
+     in relation to a Scottish partnership, a partner, and <br/>(d) in relation to an unincorporated
+     association other than a Scottish partnership, a person who is concerned in the management or
+     control of the association. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+
+
+ <lrml:Statements key="stmts35.1">
+  <lrml:Comment>35 Interpretation of Part 1 </lrml:Comment>
+
+  <lrml:Statements>
+   <!--   This fragment governs the following 12 definitions -->
+   <lrml:Comment> (1) In this Part— </lrml:Comment>
+
+   <!-- Constitutive Statement: 151 -->
+   <lrml:ConstitutiveStatement key="cs151">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“area”— (a) in relation to a council, means the local government area for
+      which the council is constituted, (b) in relation to a council officer, means the area of the
+      council which authorised the officer, </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <!-- Constitutive Statement: 152 -->
+   <lrml:ConstitutiveStatement key="cs152a">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“council” means a council constituted under section 2 of the Local Government
+      etc. (Scotland) Act 1994 (c.39), </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <lrml:ConstitutiveStatement key="cs152b">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“council officer” means a duly authorised officer of a council,
+     </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <lrml:ConstitutiveStatement key="cs152c">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“fixed penalty notice”is to be construed in accordance with section 27 and
+      schedule 1, </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <!-- Constitutive Statement: 153 -->
+   <lrml:ConstitutiveStatement key="cs153a">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“nicotine vapour product business” means a business involving the sale of
+      nicotine vapour products by retail, </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <lrml:ConstitutiveStatement key="cs153b">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“premises” includes any place and any vehicle [ or moveable structure (and,
+      for this purpose, “vehicle” includes any aircraft or ship, boat or other water-going vessel,
+      other than one of a prescribed description)] </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <!-- Constitutive Statement: 154 -->
+   <lrml:ConstitutiveStatement key="cs154">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“prescribed” means prescribed in regulations made by the Scottish Ministers
+      (and “prescribe” is to be construed accordingly) </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <!-- Constitutive Statement: 155 -->
+   <lrml:ConstitutiveStatement key="cs155">
+    <ruleml:Rule>
+     <lrml:Paraphrase>“registered” and “unregistered” have the meaning given in section 10(2)
+     </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+
+   <!-- Constitutive Statement: 156 -->
+   <lrml:ConstitutiveStatement key="cs156">
+    <ruleml:Rule>
+     <lrml:Paraphrase> “tobacco business” means a business involving the sale of tobacco products by
+      retail </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+
+   <!-- Constitutive Statement: 157 -->
+   <lrml:ConstitutiveStatement key="cs157">
+    <ruleml:Rule>
+     <lrml:Paraphrase> “tobacco or nicotine vapour product business” means a business which involves
+      (either or both) a tobacco business or a nicotine vapour product business </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+
+   <!-- Constitutive Statement: 158 -->
+   <lrml:ConstitutiveStatement key="cs158">
+    <ruleml:Rule>
+     <lrml:Paraphrase> “tobacco product” means a product consisting wholly or partly of tobacco and
+      intended to be smoked, sniffed, sucked or chewed </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <!-- Constitutive Statement: 159 -->
+   <lrml:ConstitutiveStatement key="cs159">
+    <ruleml:Rule>
+     <lrml:Paraphrase> “tobacco retailing banning order”has the meaning given in section 15(6)
+     </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+  </lrml:Statements>
+
+  <!-- Constitutive Statement: 160 -->
+  <lrml:ConstitutiveStatement key="cs160">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) For the purposes of this Part, the following are smoking related products—
+     cigarette papers, cigarette tubes, cigarette filters, apparatus for making cigarettes, cigarette
+     holders, pipes for smoking tobacco products. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Prescriptive Statement: 161 -->
+  <lrml:PrescriptiveStatement key="ps161">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) The Scottish Ministers may by order modify the list in subsection (2) as
+       they consider appropriate. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts35.2">
+  <lrml:Comment>35A Meaning of "nicotine vapour product" </lrml:Comment>
+
+  <!-- Constitutive Statement: 162 -->
+  <lrml:ConstitutiveStatement key="cs162">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(1) In this Part, a “nicotine vapour product”is— <br/>(a) a device which is intended
+     to enable the inhalation of nicotine-containing vapour by an individual, <br/>(b) a device which is
+     intended to enable the inhalation of other vapour by an individual but is intended to resemble
+     and be operated in a similar way to a device within paragraph (a), <br/>(c) an item which is
+     intended to form part of a device within paragraph (a) or (b), <br/>(d) a substance which is
+     intended to be vaporised by a device within paragraph (a) or (b) (and any item containing such
+     a substance). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 163 -->
+  <lrml:ConstitutiveStatement key="cs163">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) But the following are not nicotine vapour products— (a) a tobacco product,
+     (b) a smoking related product, (c) a medicinal product (within the meaning of the Human
+     Medicines Regulations 2012 (S.I. 2012/1916)), (d) a medical device (within the meaning of the
+     Medical Devices Regulations 2002 (S.I. 2002/618)). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#ps163" under="#ps162"/>
+  </lrml:OverrideStatement>
+
+ </lrml:Statements>
+
+
+ <lrml:Statements key="stmts36">
+  <lrml:Comment>36 Crown application </lrml:Comment>
+
+  <!-- Constitutive Statement: 164 -->
+  <lrml:ConstitutiveStatement key="cs164">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(1) This Part binds the Crown. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 165 -->
+  <lrml:ConstitutiveStatement key="cs165">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(2) No contravention by the Crown of any provision made by or under this Part
+     makes the Crown criminally liable. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Prescriptive Statement: 166 -->
+  <lrml:PrescriptiveStatement key="ps166">
+   <ruleml:Rule>
+    <ruleml:then>
+     <lrml:Permission>
+      <lrml:Paraphrase>(3) But the Court of Session may, on the application of the council in whose
+       area the contravention is alleged to have taken place, declare unlawful any act or omission
+       of the Crown which constitutes such a contravention. </lrml:Paraphrase>
+     </lrml:Permission>
+    </ruleml:then>
+   </ruleml:Rule>
+  </lrml:PrescriptiveStatement>
+
+
+  <!-- Constitutive Statement: 167 -->
+  <lrml:ConstitutiveStatement key="cs167">
+   <ruleml:Rule>
+    <lrml:Paraphrase>(4) Despite subsection (2), any provision made by or under this Part applies to
+     persons in the public service of the Crown as it applies to other persons. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+  
+  <lrml:OverrideStatement>
+   <lrml:Override under="#cs165" over="#cs167"></lrml:Override>
+  </lrml:OverrideStatement>
+
+ </lrml:Statements>
+
+</lrml:LegalRuleML>
