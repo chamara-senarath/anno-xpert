@@ -57,9 +57,11 @@ class SchemaProcessor:
             return node_map
         
         for node in nodes:
-            if isinstance(node.get_attr("enumerations"), list) :
+            if isinstance(node, str) :
+                node_map[node] = None
+            elif isinstance(node.get_attr("enumerations"), list) :
                 node_map[node.name] = {"enumerations": node.get_attr("enumerations")}
-            if isinstance(node.children, tuple) and len(node.children) > 0:
+            elif isinstance(node.children, tuple) and len(node.children) > 0:
                 node_map[node.name] = {"children": self.get_children_nodes(node.children)}
             else:
                 node_map[node.name] = None
