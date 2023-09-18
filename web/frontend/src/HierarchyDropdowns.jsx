@@ -1,16 +1,35 @@
-export const HierarchyDropdowns = ({ data, onChange, selected, level = 1 }) => {
-  const handleChange = (level, value) => {
-    console.log(selected);
-    onChange(level, value);
+import { useState } from "react";
+import { formatString } from "./helpers";
+
+export const HierarchyDropdowns = ({
+  data,
+  onChange,
+  selected,
+  level = 1,
+  isEnumeration = false,
+}) => {
+  const [enumeration, setEnumeration] = useState()
+
+  const handleChange = (level, value, isEnumeration) => {
+    onChange(level, value, isEnumeration);
+    if(isEnumeration) {
+      setEnumeration(value)
+    }
   };
 
-  const Dropdown = ({ data, level }) => {
+  const Dropdown = ({ data, level, isEnumeration }) => {
     if (data instanceof Array) {
       return (
-        <select className="select select-primary">
+        <select
+          className={
+            isEnumeration ? "select select-accent" : "select select-primary"
+          }
+          onChange={(e) => handleChange(level, e.target.value, isEnumeration)}
+          value={enumeration}
+        >
           {data.map((value, index) => (
             <option value={value} key={index}>
-              {value}
+              {formatString(value)}
             </option>
           ))}
         </select>
@@ -19,13 +38,13 @@ export const HierarchyDropdowns = ({ data, onChange, selected, level = 1 }) => {
       return (
         <select
           className="select select-primary"
-          onChange={(e) => handleChange(level, e.target.value)}
+          onChange={(e) => handleChange(level, e.target.value, isEnumeration)}
           value={selected[level]}
         >
           <option value={0}>Select Level {level}</option>
           {Object.entries(data).map((value, index) => (
             <option value={value[0]} key={index + 1}>
-              {value[0]}
+              {formatString(value[0])}
             </option>
           ))}
         </select>
@@ -35,7 +54,7 @@ export const HierarchyDropdowns = ({ data, onChange, selected, level = 1 }) => {
 
   return (
     <div className="flex space-x-4 ">
-      <Dropdown data={data} level={level} />
+      <Dropdown data={data} level={level} isEnumeration={isEnumeration} />
 
       {selected[level] && data[selected[level]]?.enumerations && (
         <HierarchyDropdowns
@@ -43,6 +62,7 @@ export const HierarchyDropdowns = ({ data, onChange, selected, level = 1 }) => {
           onChange={onChange}
           selected={selected}
           level={level + 1}
+          isEnumeration={true}
         />
       )}
 

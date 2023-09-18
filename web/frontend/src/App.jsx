@@ -5,6 +5,7 @@ import SearchSection from "./SearchSection";
 import { useEffect } from "react";
 import ResultView from "./ResultView";
 import Filters from "./Filters";
+import { joinArraysWithoutDuplicates } from "./helpers";
 
 function App() {
   const [dropdownValues, setDropDownValues] = useState({});
@@ -13,7 +14,7 @@ function App() {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
   const [matchLevel, setMatchLevel] = useState(8);
-  const [isCaseSensitive, setIsCaseSensitive] = useState(8);
+  const [isCaseSensitive, setIsCaseSensitive] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [enums, setEnums] = useState({});
 
@@ -31,7 +32,14 @@ function App() {
 
   useEffect(() => {
     fetchXmlContent();
-  }, [selectedFilters, query, matchLevel, isCaseSensitive, enums]);
+  }, [
+    selectedFilters,
+    query,
+    matchLevel,
+    isCaseSensitive,
+    enums,
+    selectedDropdowns,
+  ]);
 
   const handleLoadSchema = async (file) => {
     const data = await loadSchema(file);
@@ -40,45 +48,6 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   if (
-  //     selectedDropdowns["level1"] &&
-  //     !selectedFilters.includes(selectedDropdowns["level1"])
-  //   ) {
-  //     setSelectedFilters([...selectedFilters, selectedDropdowns["level1"]]);
-  //   }
-
-  //   if (
-  //     selectedDropdowns["level2"] &&
-  //     dropdownValues[selectedDropdowns["level1"]].children &&
-  //     dropdownValues[selectedDropdowns["level1"]].children.includes(
-  //       selectedDropdowns["level2"]
-  //     ) &&
-  //     !selectedFilters.includes(selectedDropdowns["level2"])
-  //   ) {
-  //     setSelectedFilters([...selectedFilters, selectedDropdowns["level2"]]);
-  //   }
-
-  //   if (
-  //     selectedDropdowns["level2"] &&
-  //     dropdownValues[selectedDropdowns["level1"]].enumerations &&
-  //     dropdownValues[selectedDropdowns["level1"]].enumerations.includes(
-  //       selectedDropdowns["level2"]
-  //     )
-  //   ) {
-  //     setEnums((prev) => {
-  //       return {
-  //         ...prev,
-  //         [`${selectedDropdowns["level1"]}${selectedDropdowns["level2"]}`]: {
-  //           parent: selectedDropdowns["level1"],
-  //           enum: selectedDropdowns["level2"],
-  //         },
-  //       };
-  //     });
-  //   }
-
-  // }, [selectedDropdowns]);
-
   const handleLoadData = async (file) => {
     const data = await loadXml(file);
     if (data.filename) {
@@ -86,12 +55,34 @@ function App() {
     }
   };
 
-  const handleChangeDropdowns = (level, value) => {
-    const selected = {
-      ...selectedDropdowns,
-      [level]: value,
-    };
-    setSelectedDropdowns(Object.fromEntries(Object.entries(selected).filter(([k, _]) => k <= level)));
+  const handleChangeDropdowns = (level, value, isEnumeration) => {
+    setSelectedFilters([]);
+    if (isEnumeration) {
+      setEnums((prev) => {
+        return {
+          ...prev,
+          [level - 1]: {
+            parent: selectedDropdowns[level - 1],
+            enum: value,
+          },
+        };
+      });
+    } else {
+      const selected = {
+        ...selectedDropdowns,
+        [level]: value,
+      };
+      setSelectedDropdowns(
+        Object.fromEntries(
+          Object.entries(selected).filter(([k, _]) => k <= level)
+        )
+      );
+      setEnums(
+        Object.fromEntries(
+          Object.entries(enums).filter(([k, _]) => k.parent <= level - 1)
+        )
+      );
+    }
   };
 
   const handleSearch = async (query, matchLevel, isCaseSensitive) => {
@@ -102,13 +93,16 @@ function App() {
 
   const fetchXmlContent = async () => {
     if (!xmlID) return;
-
     const data = await getXmlContent(
       xmlID,
       query,
-      selectedFilters,
+      joinArraysWithoutDuplicates(
+        Object.values(selectedDropdowns),
+        selectedFilters
+      ),
       matchLevel,
-      Object.values(enums)
+      Object.values(enums),
+      isCaseSensitive
     );
     if (data.value) {
       setResults(data.value);
@@ -126,6 +120,11 @@ function App() {
   const clearSelectedFilters = () => {
     setSelectedFilters([]);
   };
+
+  const clearDropdowns = () => {
+    setSelectedDropdowns({});
+    setEnums({});
+  }
 
   return (
     <>
@@ -162,11 +161,19 @@ function App() {
       </div>
 
       <div className="flex flex-col px-12 space-y-4">
-        <HierarchyDropdowns
-          data={dropdownValues}
-          onChange={handleChangeDropdowns}
-          selected={selectedDropdowns}
-        />
+        {dropdownValues && Object.keys(dropdownValues).length > 0 && (
+          <div className="flex space-x-4">
+            <HierarchyDropdowns
+              data={dropdownValues}
+              onChange={handleChangeDropdowns}
+              selected={selectedDropdowns}
+            />
+            <button className="btn btn-neutral btn-outline" onClick={clearDropdowns}>
+              Clear Dropdowns
+            </button>
+          </div>
+        )}
+
         <SearchSection onSearch={handleSearch} />
         {results.length > 0 && (
           <div className="flex space-x-4">
