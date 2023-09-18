@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import shutil
 import os
 import uuid
@@ -10,6 +11,16 @@ from fastapi.responses import FileResponse
 from pathlib import Path
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Directory to save uploaded files
 upload_dir = "uploads"
@@ -33,8 +44,7 @@ async def load_schema(file: UploadFile, level: int = Form(...)):
         if not file:
             return JSONResponse(content={"error": "No file uploaded"}, status_code=400)
 
-        if file.content_type != "application/xml":
-            return JSONResponse(content={"error": "Only XSD files are allowed"}, status_code=400)
+        # TODO: Check if the file is an XSD file
 
         # Generate a unique identifier
         unique_id = str(uuid.uuid4())
@@ -55,7 +65,7 @@ async def load_schema(file: UploadFile, level: int = Form(...)):
         schema_processor = SchemaProcessor(filename)
         nodes = schema_processor.get_nodes_by_level(level)
         values = schema_processor.get_children_nodes(nodes)
-        return {"value": values}
+        return {"data": values}
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
@@ -66,8 +76,8 @@ async def load_xml(file: UploadFile):
         if not file:
             return JSONResponse(content={"error": "No file uploaded"}, status_code=400)
 
-        if file.content_type != "application/xml":
-            return JSONResponse(content={"error": "Only XSD files are allowed"}, status_code=400)
+        # if file.content_type != "application/xml":
+        #     return JSONResponse(content={"error": "Only XSD files are allowed"}, status_code=400)
 
         # Generate a unique identifier
         unique_id = str(uuid.uuid4())
