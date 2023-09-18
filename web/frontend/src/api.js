@@ -33,14 +33,14 @@ export const loadXml = async (file) => {
 
 }
 
-export const getXmlContent = async (filename, query, selectedFilters) => {
+export const getXmlContent = async (filename, query, selectedFilters, matchLevel) => {
     const data = {
         "filename": filename,
         "query": query,
         "filters": selectedFilters,
         "enums": [],
+        "fuzzy_level": matchLevel,
         "is_case_sensitive": "False",
-        "fuzzy_level": 8
     }
     try {
         const response = await fetch(`${API_URL}/get_xml_content`, {

@@ -1,73 +1,59 @@
-export const HierarchyDropdowns = ({ data, onChange, selected }) => {
+export const HierarchyDropdowns = ({ data, onChange, selected, level = 1 }) => {
   const handleChange = (level, value) => {
+    console.log(selected);
     onChange(level, value);
   };
 
-  return (
-    <div className="flex space-x-4 ">
-      {/* Parent - Level 1 */}
-      {Object.keys(data).length > 0 && (
-        <select
-          className="select select-primary"
-          onChange={(e) => handleChange("level1", e.target.value)}
-        >
-          {Object.keys(data).map((value, index) => (
+  const Dropdown = ({ data, level }) => {
+    if (data instanceof Array) {
+      return (
+        <select className="select select-primary">
+          {data.map((value, index) => (
             <option value={value} key={index}>
               {value}
             </option>
           ))}
         </select>
-      )}
-
-      {/* Enumeration - Level 2 */}
-      {selected["level1"] && data[selected["level1"]]?.enumerations && (
-        <select
-          className="select select-accent"
-          onChange={(e) => handleChange("level2", e.target.value)}
-        >
-          {Object.values(data[selected["level1"]].enumerations).map(
-            (value, index) => (
-              <option value={value} key={index}>
-                {value}
-              </option>
-            )
-          )}
-        </select>
-      )}
-
-      {/* Children - Level 2 */}
-      {selected["level1"] && data[selected["level1"]]?.children && (
+      );
+    } else if (data instanceof Object) {
+      return (
         <select
           className="select select-primary"
-          onChange={(e) => handleChange("level2", e.target.value)}
+          onChange={(e) => handleChange(level, e.target.value)}
+          value={selected[level]}
         >
-          {Object.keys(data[selected["level1"]].children).map(
-            (value, index) => (
-              <option value={value} key={index}>
-                {value}
-              </option>
-            )
-          )}
+          <option value={0}>Select Level {level}</option>
+          {Object.entries(data).map((value, index) => (
+            <option value={value[0]} key={index + 1}>
+              {value[0]}
+            </option>
+          ))}
         </select>
+      );
+    }
+  };
+
+  return (
+    <div className="flex space-x-4 ">
+      <Dropdown data={data} level={level} />
+
+      {selected[level] && data[selected[level]]?.enumerations && (
+        <HierarchyDropdowns
+          data={data[selected[level]]?.enumerations}
+          onChange={onChange}
+          selected={selected}
+          level={level + 1}
+        />
       )}
 
-      {/* Children - Level 3 */}
-      {selected["level2"] &&
-        data[selected["level1"]]?.children &&
-        data[selected["level1"]]["children"][selected["level2"]]?.children && (
-          <select
-            className="select select-primary"
-            onChange={(e) => handleChange("level3", e.target.value)}
-          >
-            {Object.keys(
-              data[selected["level1"]]["children"][selected["level2"]].children
-            ).map((value, index) => (
-              <option value={value} key={index}>
-                {value}
-              </option>
-            ))}
-          </select>
-        )}
+      {selected[level] && data[selected[level]]?.children && (
+        <HierarchyDropdowns
+          data={data[selected[level]]?.children}
+          onChange={onChange}
+          selected={selected}
+          level={level + 1}
+        />
+      )}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 export default function ResultView({ results }) {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full min-h-screen">
       <span>{results.length} results found</span>
-      <div className="min-h-screen flex border rounded-lg">
+      <div className="flex border rounded-lg">
         <div className="flex flex-col space-y-4 px-4 py-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
           {results.map((item, index) => (
             <div className="outline outline-accent p-4 rounded-lg" key={index}>

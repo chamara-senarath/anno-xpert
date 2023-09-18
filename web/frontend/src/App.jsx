@@ -12,7 +12,10 @@ function App() {
   const [xmlID, setXmlID] = useState("");
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
+  const [matchLevel, setMatchLevel] = useState(8);
+  const [isCaseSensitive, setIsCaseSensitive] = useState(8);
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [enums, setEnums] = useState({});
 
   useEffect(() => {
     if (localStorage.getItem("fileID")) {
@@ -28,7 +31,7 @@ function App() {
 
   useEffect(() => {
     fetchXmlContent();
-  }, [selectedFilters]);
+  }, [selectedFilters, query, matchLevel, isCaseSensitive, enums]);
 
   const handleLoadSchema = async (file) => {
     const data = await loadSchema(file);
@@ -36,6 +39,45 @@ function App() {
       setDropDownValues(data.data);
     }
   };
+
+  // useEffect(() => {
+  //   if (
+  //     selectedDropdowns["level1"] &&
+  //     !selectedFilters.includes(selectedDropdowns["level1"])
+  //   ) {
+  //     setSelectedFilters([...selectedFilters, selectedDropdowns["level1"]]);
+  //   }
+
+  //   if (
+  //     selectedDropdowns["level2"] &&
+  //     dropdownValues[selectedDropdowns["level1"]].children &&
+  //     dropdownValues[selectedDropdowns["level1"]].children.includes(
+  //       selectedDropdowns["level2"]
+  //     ) &&
+  //     !selectedFilters.includes(selectedDropdowns["level2"])
+  //   ) {
+  //     setSelectedFilters([...selectedFilters, selectedDropdowns["level2"]]);
+  //   }
+
+  //   if (
+  //     selectedDropdowns["level2"] &&
+  //     dropdownValues[selectedDropdowns["level1"]].enumerations &&
+  //     dropdownValues[selectedDropdowns["level1"]].enumerations.includes(
+  //       selectedDropdowns["level2"]
+  //     )
+  //   ) {
+  //     setEnums((prev) => {
+  //       return {
+  //         ...prev,
+  //         [`${selectedDropdowns["level1"]}${selectedDropdowns["level2"]}`]: {
+  //           parent: selectedDropdowns["level1"],
+  //           enum: selectedDropdowns["level2"],
+  //         },
+  //       };
+  //     });
+  //   }
+
+  // }, [selectedDropdowns]);
 
   const handleLoadData = async (file) => {
     const data = await loadXml(file);
@@ -45,22 +87,29 @@ function App() {
   };
 
   const handleChangeDropdowns = (level, value) => {
-    setSelectedDropdowns((prevSelected) => {
-      return {
-        ...prevSelected,
-        [level]: value,
-      };
-    });
+    const selected = {
+      ...selectedDropdowns,
+      [level]: value,
+    };
+    setSelectedDropdowns(Object.fromEntries(Object.entries(selected).filter(([k, _]) => k <= level)));
   };
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (query, matchLevel, isCaseSensitive) => {
     setQuery(query);
-    fetchXmlContent();
+    setMatchLevel(matchLevel);
+    setIsCaseSensitive(isCaseSensitive);
   };
 
   const fetchXmlContent = async () => {
     if (!xmlID) return;
-    const data = await getXmlContent(xmlID, query, selectedFilters);
+
+    const data = await getXmlContent(
+      xmlID,
+      query,
+      selectedFilters,
+      matchLevel,
+      Object.values(enums)
+    );
     if (data.value) {
       setResults(data.value);
     }
@@ -76,7 +125,7 @@ function App() {
 
   const clearSelectedFilters = () => {
     setSelectedFilters([]);
-  }
+  };
 
   return (
     <>
