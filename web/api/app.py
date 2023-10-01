@@ -44,8 +44,6 @@ async def load_schema(file: UploadFile, level: int = Form(...)):
         if not file:
             return JSONResponse(content={"error": "No file uploaded"}, status_code=400)
 
-        # TODO: Check if the file is an XSD file
-
         # Generate a unique identifier
         unique_id = str(uuid.uuid4())
 
@@ -75,9 +73,6 @@ async def load_xml(file: UploadFile):
     try:
         if not file:
             return JSONResponse(content={"error": "No file uploaded"}, status_code=400)
-
-        # if file.content_type != "application/xml":
-        #     return JSONResponse(content={"error": "Only XSD files are allowed"}, status_code=400)
 
         # Generate a unique identifier
         unique_id = str(uuid.uuid4())
