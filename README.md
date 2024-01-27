@@ -1,10 +1,12 @@
-# A Query Interface to Machine-readable Documents
+# AnnoXpert - A Query Interface to Machine-readable Documents
 
-This is a versatile software tool designed to facilitate the querying of machine-readable documents. With this application, you can effortlessly upload XML files and corresponding schema files to the application, enabling you to interactively search and extract information from structured documents. The application offers both a desktop and web application for your convenience.
+This is a software tool designed to facilitate the querying of machine-readable documents. With this application, you can effortlessly upload XML files and corresponding schema files (.xsd) to the application, enabling you to interactively search and extract information from documents. 
 
-### How to Use video - [ Link ](https://swanseauniversity-my.sharepoint.com/personal/2238733_swansea_ac_uk/_layouts/15/stream.aspx?id=%2Fpersonal%2F2238733%5Fswansea%5Fac%5Fuk%2FDocuments%2FDemo%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19&ga=1)
+The software provides both a desktop and web application for your ease of use. Kindly be aware that the demo link for the web application hosted online is intended solely for demonstration purposes. Please refrain from uploading sensitive documents or attempting to process a large number of documents through this demo link, as it is designed exclusively for demonstration. For actual use, please use the desktop version on your computer or run the web application locally.
 
-### View online - [https://query-interface.netlify.app](https://query-interface.netlify.app/)
+### How to Use video - [ Link ](https://drive.google.com/file/d/18ms9-oVV1GTxKlH_27dCNbviqCZ7hLft/view?usp=drive_link)
+
+### View online Demo - [https://query-interface.netlify.app](https://query-interface.netlify.app/)
 
 ## Features
 
